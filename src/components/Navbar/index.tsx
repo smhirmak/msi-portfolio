@@ -149,6 +149,10 @@ const MobileMenuLinks = styled(Link)`
 `;
 
 const NavBar = () => {
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
   const [open, setOpen] = useState<boolean>(false);
   const theme = useTheme();
   return (
@@ -175,7 +179,9 @@ const NavBar = () => {
           />
         </MobileIcon>
         <NavItems>
-          <NavLink href="#top">About</NavLink>
+          <NavLink href="#about" onClick={topFunction}>
+            About
+          </NavLink>
           <NavLink href="#skills">Skills</NavLink>
           <NavLink href="#experience">Experience</NavLink>
           <NavLink href="#projects">Projects</NavLink>
