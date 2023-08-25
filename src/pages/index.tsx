@@ -5,6 +5,7 @@ import Hero from '@/components/HeroSection';
 import Skills from '@/components/Skills';
 import Education from '@/components/Education';
 import { BrowserRouter } from 'react-router-dom';
+import Experince from '@/components/Experince';
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -28,6 +29,7 @@ export default function Home() {
         <Hero />
         <Wrapper>
           <Skills />
+          <Experince />
           <Education />
         </Wrapper>
       </Body>
