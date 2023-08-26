@@ -1,11 +1,15 @@
 import styled, { ThemeProvider } from 'styled-components';
-import { darkTheme } from '@/utils/Themes';
+import { darkTheme, lightTheme } from '@/utils/Themes';
 import NavBar from '@/components/Navbar';
 import Hero from '@/components/HeroSection';
 import Skills from '@/components/Skills';
 import Education from '@/components/Education';
 import Experince from '@/components/Experince';
 import Projects from '@/components/Projects';
+import React, { useState } from 'react';
+import Contact from '@/components/Contact';
+import Footer from '@/components/Footer';
+import ProjectDetails from '@/components/ProjectDetails';
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -22,17 +26,25 @@ const Wrapper = styled.div`
 `;
 
 export default function Home() {
+  const [darkMode, setDarkMode] = useState(true);
+  const [openModal, setOpenModal] = useState({ state: false, project: null });
+  console.log(openModal);
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <NavBar />
       <Body>
         <Hero />
         <Wrapper>
           <Skills />
           <Experince />
-          {/* <Education /> */}
         </Wrapper>
         <Projects />
+        <Wrapper>
+          <Education />
+          <Contact />
+        </Wrapper>
+        <Footer />
+        {openModal.state && <ProjectDetails openModal={openModal} setOpenModal={setOpenModal} />}
       </Body>
     </ThemeProvider>
   );

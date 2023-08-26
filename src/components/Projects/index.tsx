@@ -4,6 +4,12 @@ import ProjectCard from '../Cards/ProjectCard';
 import { projects } from '@/data/constants';
 
 const Container = styled.div`
+  background: linear-gradient(
+    343.07deg,
+    rgba(132, 59, 206, 0.06) 5.71%,
+    rgba(132, 59, 206, 0) 64.83%
+  );
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,9 +17,10 @@ const Container = styled.div`
   z-index: 1;
   align-items: center;
   padding-top: 60px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 98%, 0 100%);
 `;
 const Wrapper = styled.div`
-  max-width: 1100px;
+  max-width: 1350px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -21,6 +28,7 @@ const Wrapper = styled.div`
   width: 100%;
   gap: 12px;
   align-items: center;
+  padding: 10px 0px 100px 0px;
 `;
 
 const Title = styled.div`
@@ -59,7 +67,12 @@ const ToogleGroup = styled.div`
     font-size: 12px;
   }
 `;
-const ToogleButton = styled.button`
+
+interface Props {
+  active: any;
+}
+
+const ToogleButton = styled.button<Props>`
   padding: 8px 18px;
   cursor: pointer;
   border-radius: 6px;
@@ -94,7 +107,7 @@ const CardContainer = styled.div`
 const Projects = () => {
   const [toggle, setToggle] = useState('all');
   return (
-    <Container id="#projects">
+    <Container id="projects">
       <Wrapper>
         <Title>Projects</Title>
         <Desc>

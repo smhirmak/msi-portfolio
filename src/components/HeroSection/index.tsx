@@ -22,26 +22,6 @@ const HeroContainer = styled.div`
   z-index: 1;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 95%, 0 100%);
 `;
-const HeroBg = styled.div`
-  position: absolute;
-  display: flex;
-  justify-content: end;
-  top: 50%;
-  right: 0;
-  bottom: 0;
-  left: 50%;
-  overflow: hidden;
-  width: 71%;
-  height: 100%;
-  padding: 0 30px;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-
-  @media screen and (max-width: 960px) {
-    padding: 0 0px;
-    justify-content: center;
-  }
-`;
 
 const HeroInnerContainer = styled.div`
   display: flex;
@@ -55,6 +35,7 @@ const HeroInnerContainer = styled.div`
 `;
 
 const HeroLeftContainer = styled.div`
+  flex: 1;
   width: 100%;
   order: 1;
   @media screen and (max-width: 960px) {
@@ -72,6 +53,7 @@ const HeroLeftContainer = styled.div`
   }
 `;
 const HeroRightContainer = styled.div`
+  flex: 1;
   width: 100%;
   order: 2;
   display: flex;
@@ -86,6 +68,85 @@ const HeroRightContainer = styled.div`
   @media screen and (max-width: 640px) {
     order: 1;
     margin-bottom: 30px;
+  }
+`;
+// const HeroBg = styled.div`
+//   position: absolute;
+//   z-index: -1;
+//   display: flex;
+//   justify-content: end;
+//   top: 50%;
+//   right: 0;
+//   bottom: 0;
+//   left: 50%;
+//   overflow: hidden;
+//   width: 75%;
+//   height: 100%;
+//   padding: 0 30px;
+//   -webkit-transform: translateX(-50%) translateY(-50%);
+//   transform: translateX(-50%) translateY(-50%);
+
+//   @media screen and (max-width: 960px) {
+//     padding: 0 0px;
+//     justify-content: center;
+//   }
+// `;
+const HeroBg = styled.div`
+  /* position: relative; */
+  overflow: hidden;
+  display: flex;
+  /* height: 100%; */
+
+  @media screen and (max-width: 960px) {
+    padding: 0 0px;
+    justify-content: center;
+    width: 400px;
+    height: 400px;
+  }
+  @media screen and (max-width: 768px) {
+    padding: 0 0px;
+    justify-content: center;
+    width: 350px;
+    height: 350px;
+  }
+  @media screen and (max-width: 640px) {
+    padding: 0 0px;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+  }
+
+  /* position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0 30px;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+
+  @media screen and (max-width: 960px) {
+    padding: 0 0px;
+    justify-content: center;
+  } */
+`;
+
+const HeroImage = styled(Image)`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 50%;
+  max-height: 450px;
+  max-width: 450px;
+  object-fit: cover;
+  object-position: center;
+  border: 2px solid ${({ theme }) => theme.primary};
+
+  @media (max-width: 768px) {
+    max-height: 350px;
+    max-width: 350px;
+  }
+  @media screen and (max-width: 640px) {
+    max-height: 280px;
+    max-width: 280px;
   }
 `;
 
@@ -158,7 +219,7 @@ const ResumeButton = styled(Link)`
   color: ${({ theme }) => theme.white};
   border-radius: 20px;
   cursor: pointer;
-  z-index: 1;
+  z-index: 10;
   font-size: 20px;
   font-weight: 600;
   transition: all 0.2s ease-in-out !important;
@@ -189,34 +250,10 @@ const ResumeButton = styled(Link)`
   }
 `;
 
-const HeroImage = styled(Image)`
-  width: 100%;
-  height: 100%;
-  position: relative;
-  border-radius: 50%;
-  max-height: 400px;
-  max-width: 400px;
-  object-fit: cover;
-  object-position: center;
-  border: 2px solid ${({ theme }) => theme.primary};
-
-  @media (max-width: 768px) {
-    max-height: 400px;
-    max-width: 400px;
-  }
-  @media screen and (max-width: 640px) {
-    max-height: 280px;
-    max-width: 280px;
-  }
-`;
-
 const Hero = () => {
   return (
     <div>
       <HeroContainer>
-        <HeroBg>
-          <HeroBgAnimation />
-        </HeroBg>
         <HeroInnerContainer>
           <HeroLeftContainer>
             <Title>
@@ -235,6 +272,9 @@ const Hero = () => {
           </HeroLeftContainer>
           <HeroRightContainer>
             <HeroImage src={HeroImg} alt="Hero" />
+            <HeroBg>
+              <HeroBgAnimation />
+            </HeroBg>
           </HeroRightContainer>
         </HeroInnerContainer>
       </HeroContainer>
