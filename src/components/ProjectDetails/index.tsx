@@ -205,7 +205,7 @@ const ProjectDetails: React.FC<{ openModal: any; setOpenModal: any }> = ({
           />
           <Image src={project?.image} alt="" />
           <Title>{project?.title}</Title>
-          <Date>{project.date}</Date>
+          <Date>{project?.date}</Date>
           <Tags>
             {project?.tags.map((tag: any, i: any) => (
               <Tag key={i}>{tag}</Tag>

@@ -74,7 +74,7 @@ const Top = styled.div`
 
 const Image = styled.img`
   height: 50px;
-  background-color: #000;
+  background-color: #fff;
   border-radius: 10px;
   margin-top: 4px;
   @media only screen and (max-width: 768px) {
@@ -115,15 +115,6 @@ const Date = styled.div`
   }
 `;
 
-const Grade = styled.div`
-  font-size: 14px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.text_secondary + 99};
-  @media only screen and (max-width: 768px) {
-    font-size: 12px;
-  }
-`;
-
 const EducationCard: React.FC<{ education: any }> = ({ education }) => {
   return (
     <Card>
@@ -135,10 +126,6 @@ const EducationCard: React.FC<{ education: any }> = ({ education }) => {
           <Date>{education.date}</Date>
         </Body>
       </Top>
-      <Grade>
-        <b>Grade: </b>
-        {education.grade}
-      </Grade>
       <Description>
         <Span>{education.desc}</Span>
       </Description>

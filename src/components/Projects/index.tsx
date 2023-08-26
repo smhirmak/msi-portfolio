@@ -54,47 +54,47 @@ const Desc = styled.div`
   }
 `;
 
-const ToogleGroup = styled.div`
-  display: flex;
-  border: 1.5px solid ${({ theme }) => theme.primary};
-  color: ${({ theme }) => theme.primary};
-  font-size: 16px;
-  border-radius: 12px;
-  font-weight: 500;
-  margin: 22px 0;
+// const ToogleGroup = styled.div`
+//   display: flex;
+//   border: 1.5px solid ${({ theme }) => theme.primary};
+//   color: ${({ theme }) => theme.primary};
+//   font-size: 16px;
+//   border-radius: 12px;
+//   font-weight: 500;
+//   margin: 22px 0;
 
-  @media screen and (max-width: 768px) {
-    font-size: 12px;
-  }
-`;
+//   @media screen and (max-width: 768px) {
+//     font-size: 12px;
+//   }
+// `;
 
-interface Props {
-  active: any;
-}
+// interface Props {
+//   active: any;
+// }
 
-const ToogleButton = styled.button<Props>`
-  padding: 8px 18px;
-  cursor: pointer;
-  border-radius: 6px;
+// const ToogleButton = styled.button<Props>`
+//   padding: 8px 18px;
+//   cursor: pointer;
+//   border-radius: 6px;
 
-  &.${({ active, theme }) =>
-      active &&
-      `
-    background-color: ${theme.primary + 20};
-    `}
-    &:hover {
-    background-color: ${({ theme }) => theme.primary + 8};
-  }
+//   &.${({ active, theme }) =>
+//       active &&
+//       `
+//     background-color: ${theme.primary + 20};
+//     `}
+//     &:hover {
+//     background-color: ${({ theme }) => theme.primary + 8};
+//   }
 
-  @media (max-width: 768px) {
-    padding: 6px 8px;
-    border-radius: 4px;
-  }
-`;
-const Divider = styled.div`
-  width: 1.5px;
-  background-color: ${({ theme }) => theme.primary};
-`;
+//   @media (max-width: 768px) {
+//     padding: 6px 8px;
+//     border-radius: 4px;
+//   }
+// `;
+// const Divider = styled.div`
+//   width: 1.5px;
+//   background-color: ${({ theme }) => theme.primary};
+// `;
 
 const CardContainer = styled.div`
   display: flex;
@@ -102,6 +102,7 @@ const CardContainer = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 28px;
+  padding-top: 40px;
 `;
 
 const Projects = () => {
@@ -115,7 +116,7 @@ const Projects = () => {
           my projects
         </Desc>
 
-        <ToogleGroup>
+        {/* <ToogleGroup>
           {toggle === 'all' ? (
             <ToogleButton active value="all" onClick={() => setToggle('all')}>
               All
@@ -149,7 +150,7 @@ const Projects = () => {
           ) : (
             <ToogleButton onClick={() => setToggle('machine learning')}>Machine App</ToogleButton>
           )}
-        </ToogleGroup>
+        </ToogleGroup> */}
         <CardContainer>
           {toggle == 'all' &&
             projects.map((project) => <ProjectCard key={project.id} project={project} />)}

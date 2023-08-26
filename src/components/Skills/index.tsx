@@ -4,6 +4,7 @@ import { skills } from '@/data/constants';
 
 const Container = styled.div`
   display: flex;
+  cursor: default;
   flex-direction: column;
   justify-content: center;
   position: relative;
@@ -83,6 +84,7 @@ const SkillList = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  cursor: default;
   gap: 12px;
   margin-bottom: 20px;
 `;
@@ -95,9 +97,16 @@ const SkillItem = styled.div`
   font-size: 16px;
   color: ${({ theme }) => theme.text_primary + 80};
   border: 1px solid ${({ theme }) => theme.text_primary + 80};
+
   border-radius: 12px;
   padding: 12px 16px;
   font-weight: 400;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    box-shadow: rgba(255, 255, 255, 0.15) 0px 0px 15px;
+    transform: scale(1.05);
+  }
 
   @media screen and (max-width: 768px) {
     font-size: 14px;
@@ -118,9 +127,7 @@ const Skills = () => {
     <Container id="skills">
       <Wrapper>
         <Title>Skills</Title>
-        <Desc>
-          Here are some of my skills on which I have been working on for the past 2 years.
-        </Desc>
+        <Desc>Here are some of the skills I have been working on recently.</Desc>
         <SkillsContainer>
           {skills.map((item, i) => (
             <Skill key={i}>

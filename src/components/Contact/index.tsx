@@ -11,6 +11,7 @@ const Container = styled.div`
   position: relative;
   z-index: 1;
   align-items: center;
+  padding-top: 60px;
   @media (max-width: 960px) {
     padding: 0px;
   }
@@ -128,32 +129,33 @@ const ContactButton = styled.input`
 `;
 
 const Contact = () => {
-  //hooks
   const [open, setOpen] = React.useState(false);
   const form: any = useRef();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    emailjs.sendForm('service_tox7kqs', 'template_nv7k7mj', form.current, 'SybVGsYS52j2TfLbi').then(
+    emailjs.sendForm('service_5dvhbjd', 'template_nm4l82i', form.current, 'lkrFFPph0bI0oKQRR').then(
       (result) => {
         setOpen(true);
         form.current.reset();
+        console.log(result.text);
       },
       (error) => {
         console.log(error.text);
+        setOpen(false);
       }
     );
   };
 
   return (
-    <Container>
+    <Container id="contact">
       <Wrapper>
         <Title>Contact</Title>
         <Desc>Feel free to reach out to me for any questions or opportunities!</Desc>
         <ContactForm ref={form} onSubmit={handleSubmit}>
-          <ContactTitle>Email Me 🚀</ContactTitle>
-          <ContactInput placeholder="Your Email" name="from_email" />
-          <ContactInput placeholder="Your Name" name="from_name" />
+          <ContactTitle>Contact Me</ContactTitle>
+          <ContactInput placeholder="Your Email" type="email" name="email" />
+          <ContactInput placeholder="Your Name" type="text" name="name" />
           <ContactInput placeholder="Subject" name="subject" />
           <ContactInputMessage placeholder="Message" rows={4} name="message" />
           <ContactButton type="submit" value="Send" />

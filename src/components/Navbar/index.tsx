@@ -3,6 +3,7 @@ import styled, { useTheme } from 'styled-components';
 import Link from 'next/link';
 import { DiCssdeck } from 'react-icons/di';
 import { FaBars } from 'react-icons/fa';
+import { Bio } from '@/data/constants';
 
 const Nav = styled.div`
   background-color: ${({ theme }) => theme.card_light};
@@ -186,9 +187,12 @@ const NavBar = () => {
           <NavLink href="#experience">Experience</NavLink>
           <NavLink href="#projects">Projects</NavLink>
           <NavLink href="#education">Education</NavLink>
+          <NavLink href="#contact">Contact</NavLink>
         </NavItems>
         <ButtonContainer>
-          <GithubButton href="/">Github Profile</GithubButton>
+          <GithubButton href={Bio.github} target="display">
+            Github Profile
+          </GithubButton>
         </ButtonContainer>
       </NavContainer>
       {open && (
@@ -236,7 +240,7 @@ const NavBar = () => {
               width: 'max-content'
             }}
             href="/"
-            target="_blank">
+            target="display">
             Github Profile
           </GithubButton>
         </MobileMenu>

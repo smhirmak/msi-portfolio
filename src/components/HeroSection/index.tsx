@@ -6,6 +6,8 @@ import Typewriter from 'typewriter-effect';
 import HeroImg from '@/images/memoji.png';
 import Image from 'next/image';
 import HeroBgAnimation from '@/components/HeroBgAnimation/index';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const HeroContainer = styled.div`
   background-color: ${({ theme }) => theme.card_light};
@@ -37,6 +39,7 @@ const HeroInnerContainer = styled.div`
 const HeroLeftContainer = styled.div`
   flex: 1;
   width: 100%;
+  cursor: default;
   order: 1;
   @media screen and (max-width: 960px) {
     order: 2;
@@ -195,7 +198,7 @@ const SubTitle = styled.div`
   font-size: 20px;
   color: ${({ theme }) => theme.text_primary + 95};
   line-height: 32px;
-  margin-bottom: 42px;
+  margin-bottom: 15px;
 
   @media screen and (max-width: 960px) {
     text-align: center;
@@ -250,6 +253,23 @@ const ResumeButton = styled(Link)`
   }
 `;
 
+const SocialMediaIcons = styled.div`
+  display: flex;
+  margin-bottom: 15px;
+`;
+
+const SocialMediaIcon = styled.a`
+  display: inline-block;
+  margin: 0 1rem 0 0;
+
+  font-size: 1.5rem;
+  color: ${({ theme }) => theme.text_primary};
+  transition: color 0.2s ease-in-out;
+  &:hover {
+    color: ${({ theme }) => theme.primary};
+  }
+`;
+
 const Hero = () => {
   return (
     <div>
@@ -266,7 +286,15 @@ const Hero = () => {
               </Span>
             </TextLoop>
             <SubTitle>{Bio.description}</SubTitle>
-            <ResumeButton href={Bio.resume} target="_blank">
+            <SocialMediaIcons>
+              <SocialMediaIcon href={Bio.linkedin} target="display">
+                <LinkedInIcon fontSize="large" />
+              </SocialMediaIcon>
+              <SocialMediaIcon href={Bio.github} target="display">
+                <GitHubIcon fontSize="large" />
+              </SocialMediaIcon>
+            </SocialMediaIcons>
+            <ResumeButton href={Bio.resume} target="display">
               Check Resume
             </ResumeButton>
           </HeroLeftContainer>
