@@ -10,6 +10,7 @@ import React, { useState } from 'react';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ProjectDetails from '@/components/ProjectDetails';
+import PreLoader from '@/components/PreLoader/PreLoader';
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -31,6 +32,7 @@ export default function Home() {
   console.log(openModal);
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+      <PreLoader />
       <NavBar />
       <Body>
         <Hero />

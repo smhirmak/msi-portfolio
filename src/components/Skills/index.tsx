@@ -39,6 +39,7 @@ const Desc = styled.div`
   max-width: 600px;
   text-align: center;
   color: ${({ theme }) => theme.text_secondary};
+  padding: 0 10px;
 
   @media screen and (max-width: 768px) {
     font-size: 16px;

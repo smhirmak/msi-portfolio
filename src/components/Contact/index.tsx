@@ -50,7 +50,7 @@ const Desc = styled.div`
   max-width: 600px;
   color: ${({ theme }) => theme.text_secondary};
   @media (max-width: 768px) {
-    margin-top: 12px;
+    margin: 12px 15px 0;
     font-size: 16px;
   }
 `;

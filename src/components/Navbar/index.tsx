@@ -112,7 +112,11 @@ const GithubButton = styled(Link)`
 const Span = styled.span`
   padding: 0 4px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 32px;
+
+  @media screen and (max-width: 640px) {
+    font-size: 25px;
+  }
 `;
 
 interface Props {
@@ -154,6 +158,12 @@ const NavBar = () => {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
+  function mobileMenu() {
+    setOpen(!open);
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
   const [open, setOpen] = useState<boolean>(false);
   const theme = useTheme();
   return (
@@ -168,7 +178,7 @@ const NavBar = () => {
               marginBottom: '20',
               cursor: 'pointer'
             }}>
-            <DiCssdeck size="3rem" />
+            {/* <DiCssdeck size="3rem" /> */}
             <Span>Portfolio</Span>
           </div>
         </NavLogo>
@@ -197,11 +207,7 @@ const NavBar = () => {
       </NavContainer>
       {open && (
         <MobileMenu open={open}>
-          <MobileMenuLinks
-            href="#about"
-            onClick={() => {
-              setOpen(!open);
-            }}>
+          <MobileMenuLinks href="#about" onClick={mobileMenu}>
             About
           </MobileMenuLinks>
           <MobileMenuLinks

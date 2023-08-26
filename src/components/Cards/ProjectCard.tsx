@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -90,6 +91,26 @@ const Desc = styled.div`
   max-width: 100%;
 `;
 
+const WebLinks = styled.span`
+  padding-top: 8px;
+`;
+
+const WebsiteLink = styled(Link)`
+  font-size: 16px;
+  font-weight: 400;
+  padding: 2px 8px;
+  border-radius: 10px;
+
+  color: ${({ theme }) => theme.white + 99};
+  transition: all 0.2s ease-in;
+  border: 1px solid ${({ theme }) => theme.button};
+
+  &:hover {
+    color: ${({ theme }) => theme.button};
+    background-color: ${({ theme }) => theme.bg};
+  }
+`;
+
 const Members = styled.div`
   display: flex;
   align-items: center;
@@ -120,11 +141,16 @@ const ProjectCard: React.FC<{ project: any }> = ({ project }) => {
         <Date>{project.date}</Date>
         <Desc>{project.description}</Desc>
       </Details>
-      <Members>
+      <WebLinks>
+        <WebsiteLink href={project.webapp} target="display">
+          Website Link
+        </WebsiteLink>
+      </WebLinks>
+      {/* <Members>
         {project.member?.map((person: any) => (
           <Avatar key={person.img} src={person.img} />
         ))}
-      </Members>
+      </Members> */}
     </Card>
   );
 };
