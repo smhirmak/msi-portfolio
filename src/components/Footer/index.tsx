@@ -9,7 +9,6 @@ const FooterContainer = styled.div`
   padding: 2rem 0;
   display: flex;
   justify-content: center;
-  //background: linear-gradient(100.26deg, rgba(0, 102, 255, 0.05) 42.33%, rgba(150, 0, 225, 0.05) 127.07%);
 `;
 
 const FooterWrapper = styled.footer`
@@ -84,8 +83,8 @@ const Copyright = styled.p`
 
 function Footer() {
   function topFunction() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
   return (
     <FooterContainer>

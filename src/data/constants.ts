@@ -157,7 +157,6 @@ export const projects = [
   {
     id: 0,
     title: 'Shopping Cart App',
-    // date: 'Jun 2023 - Jul 2023',
     description:
       'This project is a demo e-commerce website and developed using React, NextJS, TypeScript, Material UI.',
     image:
@@ -180,11 +179,3 @@ export const projects = [
     webapp: 'https://weather-app-smhirmak.vercel.app/'
   }
 ];
-
-// export const TimeLineData = [
-//   { year: 2017, text: 'Started my journey' },
-//   { year: 2018, text: 'Worked as a freelance developer' },
-//   { year: 2019, text: 'Founded JavaScript Mastery' },
-//   { year: 2020, text: 'Shared my projects with the world' },
-//   { year: 2021, text: 'Started my own platform' }
-// ];

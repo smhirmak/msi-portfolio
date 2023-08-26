@@ -46,7 +46,6 @@ const PreLoader = () => {
       <TextsContainer className="texts-container">
         <Text>Muhammed Semih Irmak</Text>
         <Text>Frontend Developer</Text>
-        {/* <Text>Vibe.</Text> */}
       </TextsContainer>
     </Container>
   );

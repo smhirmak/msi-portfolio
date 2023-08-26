@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import styled, { useTheme } from 'styled-components';
 import Link from 'next/link';
-import { DiCssdeck } from 'react-icons/di';
 import { FaBars } from 'react-icons/fa';
 import { Bio } from '@/data/constants';
 
@@ -155,13 +154,13 @@ const MobileMenuLinks = styled(Link)`
 
 const NavBar = () => {
   function topFunction() {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
   function mobileMenu() {
     setOpen(!open);
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
   }
 
   const [open, setOpen] = useState<boolean>(false);
@@ -178,7 +177,6 @@ const NavBar = () => {
               marginBottom: '20',
               cursor: 'pointer'
             }}>
-            {/* <DiCssdeck size="3rem" /> */}
             <Span>Portfolio</Span>
           </div>
         </NavLogo>

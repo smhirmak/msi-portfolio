@@ -11,6 +11,7 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ProjectDetails from '@/components/ProjectDetails';
 import PreLoader from '@/components/PreLoader/PreLoader';
+import Head from 'next/head';
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -31,23 +32,31 @@ export default function Home() {
   const [openModal, setOpenModal] = useState({ state: false, project: null });
   console.log(openModal);
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
-      <PreLoader />
-      <NavBar />
-      <Body>
-        <Hero />
-        <Wrapper>
-          <Skills />
-          <Experince />
-        </Wrapper>
-        <Projects />
-        <Wrapper>
-          <Education />
-          <Contact />
-        </Wrapper>
-        <Footer />
-        {openModal.state && <ProjectDetails openModal={openModal} setOpenModal={setOpenModal} />}
-      </Body>
-    </ThemeProvider>
+    <>
+      <Head>
+        <title>Muhammed Semih Irmak</title>
+        <meta name="description" content="Muhammed Semih Irmak - Portfolio" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/logo.svg" />
+      </Head>
+      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+        <PreLoader />
+        <NavBar />
+        <Body>
+          <Hero />
+          <Wrapper>
+            <Skills />
+            <Experince />
+          </Wrapper>
+          <Projects />
+          <Wrapper>
+            <Education />
+            <Contact />
+          </Wrapper>
+          <Footer />
+          {openModal.state && <ProjectDetails openModal={openModal} setOpenModal={setOpenModal} />}
+        </Body>
+      </ThemeProvider>
+    </>
   );
 }

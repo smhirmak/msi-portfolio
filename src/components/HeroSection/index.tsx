@@ -1,13 +1,12 @@
-import { Bio } from '@/data/constants';
-import Link from 'next/link';
-import React from 'react';
-import styled from 'styled-components';
-import Typewriter from 'typewriter-effect';
-import HeroImg from '@/images/memoji.png';
-import Image from 'next/image';
 import HeroBgAnimation from '@/components/HeroBgAnimation/index';
+import { Bio } from '@/data/constants';
+import HeroImg from '@/images/memoji.png';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import Image from 'next/image';
+import Link from 'next/link';
+import styled from 'styled-components';
+import Typewriter from 'typewriter-effect';
 
 const HeroContainer = styled.div`
   background-color: ${({ theme }) => theme.card_light};
@@ -73,32 +72,10 @@ const HeroRightContainer = styled.div`
     margin-bottom: 30px;
   }
 `;
-// const HeroBg = styled.div`
-//   position: absolute;
-//   z-index: -1;
-//   display: flex;
-//   justify-content: end;
-//   top: 50%;
-//   right: 0;
-//   bottom: 0;
-//   left: 50%;
-//   overflow: hidden;
-//   width: 75%;
-//   height: 100%;
-//   padding: 0 30px;
-//   -webkit-transform: translateX(-50%) translateY(-50%);
-//   transform: translateX(-50%) translateY(-50%);
 
-//   @media screen and (max-width: 960px) {
-//     padding: 0 0px;
-//     justify-content: center;
-//   }
-// `;
 const HeroBg = styled.div`
-  /* position: relative; */
   overflow: hidden;
   display: flex;
-  /* height: 100%; */
 
   @media screen and (max-width: 960px) {
     padding: 0 0px;
@@ -118,18 +95,6 @@ const HeroBg = styled.div`
     width: 300px;
     height: 300px;
   }
-
-  /* position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 0 30px;
-  -webkit-transform: translateX(-50%) translateY(-50%);
-  transform: translateX(-50%) translateY(-50%);
-
-  @media screen and (max-width: 960px) {
-    padding: 0 0px;
-    justify-content: center;
-  } */
 `;
 
 const HeroImage = styled(Image)`

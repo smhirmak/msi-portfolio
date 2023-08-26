@@ -16,9 +16,7 @@ const Card = styled.div`
   flex-direction: column;
   gap: 14px;
   &:hover {
-    /* transform: translateY(-6px); */
     transform: scale(1.02);
-    /* box-shadow: 0 0 50px 4px rgba(0, 0, 0, 0.6); */
     filter: drop-shadow(0 0 0.5rem #8c58e6);
   }
 `;
@@ -146,11 +144,6 @@ const ProjectCard: React.FC<{ project: any }> = ({ project }) => {
           Website Link
         </WebsiteLink>
       </WebLinks>
-      {/* <Members>
-        {project.member?.map((person: any) => (
-          <Avatar key={person.img} src={person.img} />
-        ))}
-      </Members> */}
     </Card>
   );
 };
