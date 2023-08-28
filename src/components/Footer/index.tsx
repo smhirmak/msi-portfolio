@@ -32,14 +32,14 @@ const Logo = styled.h1`
 const Nav = styled.nav`
   width: 100%;
   max-width: 800px;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: row;
   gap: 2rem;
   justify-content: center;
   @media (max-width: 768px) {
     flex-wrap: wrap;
-    /* gap: 1rem; */
+    gap: 1.2rem;
     justify-content: center;
     text-align: center;
     font-size: 12px;
@@ -52,17 +52,22 @@ const NavLink = styled.a`
   text-decoration: none;
   font-size: 1.2rem;
   transition: color 0.2s ease-in-out;
+  margin-bottom: 1rem;
   &:hover {
     color: ${({ theme }) => theme.primary};
   }
   @media (max-width: 768px) {
     font-size: 1rem;
+    margin-bottom: 0;
   }
 `;
 
 const SocialMediaIcons = styled.div`
   display: flex;
-  margin-bottom: 2rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 const SocialMediaIcon = styled.a`
