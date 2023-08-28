@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React from 'react';
 import styled from 'styled-components';
 
@@ -6,7 +5,7 @@ const Card = styled.div`
   width: 330px;
   height: 490px;
   background-color: ${({ theme }) => theme.card};
-  cursor: pointer;
+  cursor: default;
   border-radius: 10px;
   box-shadow: 0 0 12px 4px rgba(0, 0, 0, 1);
   overflow: hidden;

@@ -1,12 +1,11 @@
-import React from 'react';
+import { education as educations, experiences } from '@/data/constants';
 import Timeline from '@mui/lab/Timeline';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import styled from 'styled-components';
-import { education as educations, experiences } from '@/data/constants';
 import EducationCard from '../Cards/EducationCard';
 
 const Container = styled.div`
@@ -97,9 +96,7 @@ const Education = () => {
                 </TimelineContent>
                 <TimelineSeparator>
                   <TimelineDot variant="outlined" color="error" />
-                  {index !== experiences.length && (
-                    <TimelineConnector style={{ background: '#ff6868' }} />
-                  )}
+                  {index !== experiences.length && <TimelineConnector />}
                 </TimelineSeparator>
               </TimelineItem>
             ))}

@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import styled, { useTheme } from 'styled-components';
-import Link from 'next/link';
-import { FaBars } from 'react-icons/fa';
 import { Bio } from '@/data/constants';
+import Logo from '@/images/logo.png';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useState } from 'react';
+import { FaBars } from 'react-icons/fa';
+import styled, { useTheme } from 'styled-components';
 
 const Nav = styled.div`
   background-color: ${({ theme }) => theme.card_light};
@@ -24,28 +26,44 @@ const NavContainer = styled.div`
   height: 60px;
   z-index: 1;
   width: 100%;
-  padding: 0 24px;
+  /* padding: 0 24px 0 0; */
   max-width: 1200px;
 `;
 const NavLogo = styled(Link)`
-  width: 80%;
-  padding: 0 6px;
+  width: 100%;
+  padding: 0;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
   text-decoration: none;
   @media (max-width: 640px) {
-    padding: 0 0px;
+    padding: 0;
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: 16px;
   }
 `;
-const MobileIcon = styled.div`
+
+const LogoImage = styled(Image)`
+  width: 280px;
+  height: 30px;
+
+  @media screen and (max-width: 640px) {
+    width: 251px;
+    height: 27px;
+  }
+`;
+
+const MenuIcon = styled.div`
   display: none;
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
-    top: 0;
+    top: 5px;
     right: 0;
-    transform: translate(-100%, 50%);
+    transform: translate(-80%, 50%);
     font-size: 1.5rem;
     cursor: pointer;
     color: ${({ theme }) => theme.text_primary};
@@ -100,8 +118,8 @@ const GithubButton = styled(Link)`
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   &:hover {
-    background-color: ${({ theme }) => theme.primary + 99};
-    border: 1.8px solid ${({ theme }) => theme.primary + 10};
+    background-color: ${({ theme }) => theme.primary};
+    border: 1.8px solid ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.white};
   }
   @media screen and (max-width: 640px) {
@@ -112,7 +130,7 @@ const GithubButton = styled(Link)`
 const Span = styled.span`
   padding: 0 4px;
   font-weight: bold;
-  font-size: 32px;
+  font-size: 28px;
 
   @media screen and (max-width: 640px) {
     font-size: 25px;
@@ -178,16 +196,17 @@ const NavBar = () => {
               marginBottom: '20',
               cursor: 'pointer'
             }}>
-            <Span>Portfolio</Span>
+            {/* <Span>Muhammed Semih Irmak</Span> */}
+            <LogoImage src={Logo} alt="SEMIHIRMAK" />
           </div>
         </NavLogo>
-        <MobileIcon>
+        <MenuIcon>
           <FaBars
             onClick={() => {
               setOpen(!open);
             }}
           />
-        </MobileIcon>
+        </MenuIcon>
         <NavItems>
           <NavLink href="#about" onClick={topFunction}>
             About

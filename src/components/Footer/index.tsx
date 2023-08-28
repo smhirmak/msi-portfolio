@@ -1,6 +1,6 @@
-import styled from 'styled-components';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import styled from 'styled-components';
 
 import { Bio } from '@/data/constants';
 
@@ -39,10 +39,11 @@ const Nav = styled.nav`
   justify-content: center;
   @media (max-width: 768px) {
     flex-wrap: wrap;
-    gap: 1rem;
+    /* gap: 1rem; */
     justify-content: center;
     text-align: center;
     font-size: 12px;
+    margin-bottom: 100px;
   }
 `;
 
@@ -73,13 +74,6 @@ const SocialMediaIcon = styled.a`
   &:hover {
     color: ${({ theme }) => theme.primary};
   }
-`;
-
-const Copyright = styled.p`
-  margin-top: 1.5rem;
-  font-size: 0.9rem;
-  color: ${({ theme }) => theme.soft2};
-  text-align: center;
 `;
 
 function Footer() {

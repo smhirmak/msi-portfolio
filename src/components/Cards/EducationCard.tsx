@@ -77,6 +77,7 @@ const Image = styled.img`
   background-color: #fff;
   border-radius: 10px;
   margin-top: 4px;
+  padding: 3px;
   @media only screen and (max-width: 768px) {
     height: 40px;
   }

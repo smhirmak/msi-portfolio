@@ -1,17 +1,17 @@
-import styled, { ThemeProvider } from 'styled-components';
-import { darkTheme, lightTheme } from '@/utils/Themes';
-import NavBar from '@/components/Navbar';
-import Hero from '@/components/HeroSection';
-import Skills from '@/components/Skills';
+import Contact from '@/components/Contact';
 import Education from '@/components/Education';
 import Experince from '@/components/Experince';
-import Projects from '@/components/Projects';
-import React, { useState } from 'react';
-import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
-import ProjectDetails from '@/components/ProjectDetails';
+import Hero from '@/components/HeroSection';
+import NavBar from '@/components/Navbar';
 import PreLoader from '@/components/PreLoader/PreLoader';
+import ProjectDetails from '@/components/ProjectDetails';
+import Projects from '@/components/Projects';
+import Skills from '@/components/Skills';
+import { darkTheme } from '@/utils/Themes';
 import Head from 'next/head';
+import { useState } from 'react';
+import styled, { ThemeProvider } from 'styled-components';
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -28,18 +28,16 @@ const Wrapper = styled.div`
 `;
 
 export default function Home() {
-  const [darkMode, setDarkMode] = useState(true);
   const [openModal, setOpenModal] = useState({ state: false, project: null });
-  console.log(openModal);
   return (
     <>
       <Head>
         <title>Muhammed Semih Irmak</title>
         <meta name="description" content="Muhammed Semih Irmak - Portfolio" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/logo.svg" />
+        <link rel="icon" href="/logo-2.ico" />
       </Head>
-      <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+      <ThemeProvider theme={darkTheme}>
         <PreLoader />
         <NavBar />
         <Body>

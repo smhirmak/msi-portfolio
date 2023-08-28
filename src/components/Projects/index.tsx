@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import { projects } from '@/data/constants';
 import styled from 'styled-components';
 import ProjectCard from '../Cards/ProjectCard';
-import { projects } from '@/data/constants';
 
 const Container = styled.div`
   background: linear-gradient(340deg, rgba(216, 38, 38, 0.06) 20%, rgba(216, 38, 38, 0) 75%);
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -102,13 +100,11 @@ const CardContainer = styled.div`
 `;
 
 const Projects = () => {
-  const [toggle, setToggle] = useState('all');
   return (
     <Container id="projects">
       <Wrapper>
         <Title>Projects</Title>
         <Desc>Projects of my own that I`m working on.</Desc>
-
         {/* <ToogleGroup>
           {toggle === 'all' ? (
             <ToogleButton active value="all" onClick={() => setToggle('all')}>
@@ -145,13 +141,9 @@ const Projects = () => {
           )}
         </ToogleGroup> */}
         <CardContainer>
-          {toggle == 'all' &&
-            projects.map((project) => <ProjectCard key={project.id} project={project} />)}
-          {projects
-            .filter((item) => item.category === toggle)
-            .map((project) => (
-              <ProjectCard key={project.id} project={project} />
-            ))}
+          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
+          ))}
         </CardContainer>
       </Wrapper>
     </Container>

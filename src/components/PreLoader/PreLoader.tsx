@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
 import { preLoaderAnim } from '@/components/animations/index';
+import { useEffect } from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   height: 100vh;

@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { Portal, Snackbar } from '@mui/material';
+import React, { useRef, useState } from 'react';
+import styled from 'styled-components';
 
 const Container = styled.div`
   display: flex;
@@ -143,12 +142,9 @@ const Contact = () => {
       (result) => {
         setOpen(true);
         form.current.reset();
-        console.log(result.text);
         setResponseMessage('Email sent successfully!');
       },
       (error) => {
-        console.log(error.text);
-        console.log(error);
         setOpen(true);
         setResponseMessage('Something went wrong' + ` (${error.status})`);
       }
