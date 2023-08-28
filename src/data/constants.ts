@@ -1,8 +1,6 @@
 export const Bio = {
   name: 'Muhammed Semih',
   roles: ['Frontend Developer', 'Programmer', 'Engineer'],
-  description:
-    "I'm a motivated Frontend Developer skilled in React, JavaScript, TypeScript, HTML, CSS, and Next.js. With a passion for learning and a growth mindset, I'm committed to delivering high-quality results and creating a significant impact. Ready to collaborate and bring creative projects to life.",
   github: 'https://github.com/smhirmak',
   resume: 'https://drive.google.com/file/d/10Z0iCsumQlQxjLck1wEGkwyCWAgv_pK8/view?usp=drive_link',
   linkedin: 'https://www.linkedin.com/in/muhammed-semih-irmak-307890152/'

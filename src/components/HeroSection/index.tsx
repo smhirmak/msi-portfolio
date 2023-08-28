@@ -159,9 +159,9 @@ const Span = styled.span`
   cursor: pointer;
 `;
 
-const SubTitle = styled.div`
+const SubTitle = styled.p`
   font-size: 20px;
-  color: ${({ theme }) => theme.text_primary + 95};
+  color: ${({ theme }) => theme.text_primary + 99};
   line-height: 32px;
   margin-bottom: 15px;
 
@@ -173,6 +173,11 @@ const SubTitle = styled.div`
     font-size: 16px;
     line-height: 32px;
   }
+`;
+
+const TextSpan = styled.span`
+  font-weight: 600;
+  color: ${({ theme }) => theme.text_primary};
 `;
 
 const ResumeButton = styled(Link)`
@@ -250,13 +255,39 @@ const Hero = () => {
                 <Typewriter options={{ strings: Bio.roles, autoStart: true, loop: true }} />
               </Span>
             </TextLoop>
-            <SubTitle>{Bio.description}</SubTitle>
+            <SubTitle>
+              I`m a motivated Frontend Developer skilled in{' '}
+              <TextSpan>React, JavaScript, TypeScript, HTML, CSS and Next.js</TextSpan>. With a
+              passion for learning and a growth mindset, I`m committed to delivering high-quality
+              results and creating a significant impact. Ready to collaborate and bring creative
+              projects to life.
+            </SubTitle>
             <SocialMediaIcons>
               <SocialMediaIcon href={Bio.linkedin} target="display">
-                <LinkedInIcon fontSize="large" />
+                <LinkedInIcon
+                  fontSize="large"
+                  sx={{
+                    transition: 'all 0.3s ease-in-out',
+                    '&:hover': {
+                      color: 'rgb(10,102,194)',
+                      transition: 'all 0.3s ease-in-out',
+                      transform: 'scale(1.15)'
+                    }
+                  }}
+                />
               </SocialMediaIcon>
               <SocialMediaIcon href={Bio.github} target="display">
-                <GitHubIcon fontSize="large" />
+                <GitHubIcon
+                  fontSize="large"
+                  sx={{
+                    transition: 'all 0.3s ease-in-out',
+                    '&:hover': {
+                      color: 'rgb(10,102,194)',
+                      transition: 'all 0.3s ease-in-out',
+                      transform: 'scale(1.15)'
+                    }
+                  }}
+                />
               </SocialMediaIcon>
             </SocialMediaIcons>
             <ResumeButton href={Bio.resume} target="display">

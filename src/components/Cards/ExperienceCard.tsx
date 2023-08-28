@@ -25,7 +25,7 @@ const Card = styled.div`
   flex-direction: column;
   gap: 12px;
   transition: all 0.3s ease-in-out;
-  border: 0.1px solid ${({ theme }) => theme.primary};
+  border: 2px solid ${({ theme }) => theme.primary};
   box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
   &:hover {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
@@ -49,9 +49,10 @@ const Top = styled.div`
 const Logo = styled.img`
   height: 50px;
   width: 50px;
-  background-color: #000;
+  background-color: #fff;
   border-radius: 10px;
-  margin-top: 10px;
+  margin-top: 5px;
+  padding: 1.5px;
 
   @media only screen and (max-width: 768px) {
     height: 40px;

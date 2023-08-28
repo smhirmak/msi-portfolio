@@ -67,12 +67,12 @@ const SocialMediaIcons = styled.div`
 
 const SocialMediaIcon = styled.a`
   display: inline-block;
-  margin: 0 1rem;
+  margin: 0 0.8rem;
   font-size: 1.5rem;
   color: ${({ theme }) => theme.text_primary};
   transition: color 0.2s ease-in-out;
   &:hover {
-    color: ${({ theme }) => theme.primary};
+    /* color: ${({ theme }) => theme.primary}; */
   }
 `;
 
@@ -97,10 +97,30 @@ function Footer() {
         </Nav>
         <SocialMediaIcons>
           <SocialMediaIcon href={Bio.linkedin} target="display">
-            <LinkedInIcon />
+            <LinkedInIcon
+              fontSize="large"
+              sx={{
+                transition: 'all 0.3s ease-in-out',
+                '&:hover': {
+                  color: 'rgb(10,102,194)',
+                  transition: 'all 0.3s ease-in-out',
+                  transform: 'scale(1.2)'
+                }
+              }}
+            />
           </SocialMediaIcon>
           <SocialMediaIcon href={Bio.github} target="display">
-            <GitHubIcon />
+            <GitHubIcon
+              fontSize="large"
+              sx={{
+                transition: 'all 0.3s ease-in-out',
+                '&:hover': {
+                  color: 'rgb(10,102,194)',
+                  transition: 'all 0.3s ease-in-out',
+                  transform: 'scale(1.2)'
+                }
+              }}
+            />
           </SocialMediaIcon>
         </SocialMediaIcons>
       </FooterWrapper>

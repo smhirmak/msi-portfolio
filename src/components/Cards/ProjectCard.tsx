@@ -16,7 +16,7 @@ const Card = styled.div`
   gap: 14px;
   &:hover {
     transform: scale(1.05);
-    filter: drop-shadow(0 0 0.5rem ${({ theme }) => theme.primary});
+    filter: drop-shadow(0 0 0.3rem ${({ theme }) => theme.primary});
   }
 `;
 const Image = styled.img`

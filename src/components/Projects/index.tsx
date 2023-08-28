@@ -95,7 +95,7 @@ const CardContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 28px;
+  gap: 36px;
   padding-top: 40px;
 `;
 
