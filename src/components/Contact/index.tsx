@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import { Snackbar } from '@mui/material';
+import { Portal, Snackbar } from '@mui/material';
 
 const Container = styled.div`
   display: flex;
@@ -63,7 +63,7 @@ const ContactForm = styled.form`
   background-color: ${({ theme }) => theme.card};
   padding: 32px;
   border-radius: 16px;
-  box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
+  box-shadow: ${({ theme }) => theme.primary + 40} 0px 4px 24px;
   margin-top: 28px;
   gap: 12px;
 `;
@@ -107,17 +107,17 @@ const ContactButton = styled.input`
   width: 100%;
   text-decoration: none;
   text-align: center;
-  background: hsla(271, 100%, 50%, 1);
-  background: linear-gradient(225deg, hsla(271, 100%, 50%, 1) 0%, hsla(294, 100%, 50%, 1) 100%);
+  background: hsla(220, 100%, 41%, 1);
+  background: linear-gradient(280deg, hsla(0, 100%, 45%, 1) 0%, hsla(220, 100%, 41%, 1) 100%);
   background: -moz-linear-gradient(
-    225deg,
-    hsla(271, 100%, 50%, 1) 0%,
-    hsla(294, 100%, 50%, 1) 100%
+    280deg,
+    hsla(0, 100%, 45%, 1) 0%,
+    hsla(220, 100%, 41%, 45%, 1) 100%
   );
   background: -webkit-linear-gradient(
-    225deg,
-    hsla(271, 100%, 50%, 1) 0%,
-    hsla(294, 100%, 50%, 1) 100%
+    280deg,
+    hsla(0, 100%, 45%, 1) 0%,
+    hsla(220, 100%, 41%, 1) 100%
   );
   padding: 13px 16px;
   margin-top: 2px;
@@ -126,10 +126,12 @@ const ContactButton = styled.input`
   color: ${({ theme }) => theme.text_primary};
   font-size: 18px;
   font-weight: 600;
+  cursor: pointer;
 `;
 
 const Contact = () => {
   const [open, setOpen] = React.useState(false);
+  const [responseMessage, setResponseMessage] = useState<string>('');
   const form: any = useRef();
 
   const handleSubmit = (e: any) => {
@@ -139,14 +141,16 @@ const Contact = () => {
         setOpen(true);
         form.current.reset();
         console.log(result.text);
+        setResponseMessage('Email sent successfully!');
       },
       (error) => {
         console.log(error.text);
-        setOpen(false);
+        console.log(error);
+        setOpen(true);
+        setResponseMessage('Something went wrong' + ` (${error.status})`);
       }
     );
   };
-
   return (
     <Container id="contact">
       <Wrapper>
@@ -160,12 +164,15 @@ const Contact = () => {
           <ContactInputMessage placeholder="Message" rows={4} name="message" />
           <ContactButton type="submit" value="Send" />
         </ContactForm>
-        <Snackbar
-          open={open}
-          autoHideDuration={6000}
-          onClose={() => setOpen(false)}
-          message="Email sent successfully!"
-        />
+        <Portal>
+          <Snackbar
+            open={open}
+            autoHideDuration={5000}
+            onClose={() => setOpen(false)}
+            message={responseMessage}
+            sx={{ zIndex: 100 }}
+          />
+        </Portal>
       </Wrapper>
     </Container>
   );

@@ -26,6 +26,8 @@ const Card = styled.div`
   flex-direction: column;
   gap: 12px;
   transition: all 0.3s ease-in-out;
+  border: 0.1px solid ${({ theme }) => theme.primary};
+  box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
   &:hover {
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     transform: translateY(-5px);
@@ -39,9 +41,6 @@ const Card = styled.div`
   &:hover ${Document} {
     display: flex;
   }
-
-  border: 0.1px solid #306ee8;
-  box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
 `;
 const Top = styled.div`
   display: flex;

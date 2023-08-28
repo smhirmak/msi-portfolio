@@ -4,11 +4,7 @@ import ProjectCard from '../Cards/ProjectCard';
 import { projects } from '@/data/constants';
 
 const Container = styled.div`
-  background: linear-gradient(
-    343.07deg,
-    rgba(132, 59, 206, 0.06) 5.71%,
-    rgba(132, 59, 206, 0) 64.83%
-  );
+  background: linear-gradient(340deg, rgba(216, 38, 38, 0.06) 20%, rgba(216, 38, 38, 0) 75%);
 
   display: flex;
   flex-direction: column;

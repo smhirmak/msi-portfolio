@@ -8,7 +8,7 @@ const Card = styled.div`
   background-color: ${({ theme }) => theme.card};
   cursor: pointer;
   border-radius: 10px;
-  box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 12px 4px rgba(0, 0, 0, 1);
   overflow: hidden;
   transition: all 0.35s ease-in-out;
   padding: 26px 20px;
@@ -16,8 +16,8 @@ const Card = styled.div`
   flex-direction: column;
   gap: 14px;
   &:hover {
-    transform: scale(1.02);
-    filter: drop-shadow(0 0 0.5rem #8c58e6);
+    transform: scale(1.05);
+    filter: drop-shadow(0 0 0.5rem ${({ theme }) => theme.primary});
   }
 `;
 const Image = styled.img`
@@ -41,7 +41,7 @@ const Tag = styled.span`
   font-size: 12px;
   font-weight: 400;
   color: ${({ theme }) => theme.primary};
-  background-color: ${({ theme }) => theme.primary + 15};
+  background-color: ${({ theme }) => theme.secondary + 20};
   padding: 2px 8px;
   border-radius: 10px;
 `;
@@ -104,8 +104,8 @@ const WebsiteLink = styled(Link)`
   border: 1px solid ${({ theme }) => theme.button};
 
   &:hover {
-    color: ${({ theme }) => theme.button};
-    background-color: ${({ theme }) => theme.bg};
+    background-color: ${({ theme }) => theme.primary + 99};
+    color: ${({ theme }) => theme.white};
   }
 `;
 

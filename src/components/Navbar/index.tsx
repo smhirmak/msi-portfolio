@@ -100,7 +100,8 @@ const GithubButton = styled(Link)`
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   &:hover {
-    background-color: ${({ theme }) => theme.primary};
+    background-color: ${({ theme }) => theme.primary + 99};
+    border: 1.8px solid ${({ theme }) => theme.primary + 10};
     color: ${({ theme }) => theme.white};
   }
   @media screen and (max-width: 640px) {
