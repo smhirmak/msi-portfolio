@@ -58,7 +58,7 @@ const Desc = styled.div`
 
 const ContactForm = styled.form`
   width: 95%;
-  max-width: 600px;
+  max-width: 650px;
   display: flex;
   flex-direction: column;
   background-color: ${({ theme }) => theme.card};
@@ -132,7 +132,7 @@ const ContactButton = styled.input`
 `;
 
 const Contact = () => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState<boolean>(false);
   const [responseMessage, setResponseMessage] = useState<string>('');
   const form: any = useRef();
 
@@ -146,7 +146,7 @@ const Contact = () => {
       },
       (error) => {
         setOpen(true);
-        setResponseMessage('Something went wrong' + ` (${error.status})`);
+        form.current.setResponseMessage('Something went wrong' + ` (${error.status})`);
       }
     );
   };
@@ -157,8 +157,18 @@ const Contact = () => {
         <Desc>Feel free to reach out to me for any questions or opportunities!</Desc>
         <ContactForm ref={form} onSubmit={handleSubmit}>
           <ContactTitle>Contact Me</ContactTitle>
-          <ContactInput placeholder="Your Email" type="email" name="email" />
-          <ContactInput placeholder="Your Name" type="text" name="name" />
+          <ContactInput
+            placeholder="Your Email"
+            type="email"
+            name="email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+          />
+          <ContactInput
+            placeholder="Your Name"
+            type="text"
+            name="name"
+            title="Invalid email address"
+          />
           <ContactInput placeholder="Subject" name="subject" />
           <ContactInputMessage placeholder="Message" rows={4} name="message" />
           <ContactButton type="submit" value="Send" />

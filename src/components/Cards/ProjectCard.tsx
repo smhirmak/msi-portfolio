@@ -38,7 +38,7 @@ const Tags = styled.div`
 
 const Tag = styled.span`
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
   color: ${({ theme }) => theme.primary};
   background-color: ${({ theme }) => theme.secondary + 20};
   padding: 2px 8px;

@@ -43,7 +43,7 @@ const Nav = styled.nav`
     justify-content: center;
     text-align: center;
     font-size: 12px;
-    margin-bottom: 100px;
+    margin-bottom: 30px;
   }
 `;
 
@@ -62,7 +62,7 @@ const NavLink = styled.a`
 
 const SocialMediaIcons = styled.div`
   display: flex;
-  margin-top: 1rem;
+  margin-bottom: 2rem;
 `;
 
 const SocialMediaIcon = styled.a`
@@ -71,9 +71,6 @@ const SocialMediaIcon = styled.a`
   font-size: 1.5rem;
   color: ${({ theme }) => theme.text_primary};
   transition: color 0.2s ease-in-out;
-  &:hover {
-    /* color: ${({ theme }) => theme.primary}; */
-  }
 `;
 
 function Footer() {

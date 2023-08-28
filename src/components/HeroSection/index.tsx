@@ -156,7 +156,7 @@ const TextLoop = styled.div`
 
 const Span = styled.span`
   color: ${({ theme }) => theme.primary};
-  cursor: pointer;
+  cursor: default;
 `;
 
 const SubTitle = styled.p`

@@ -162,7 +162,7 @@ export const projects = [
     tags: ['React Js', 'Next.js', 'TypeScript', 'HTML', 'CSS', 'Material UI'],
     category: 'web app',
     github: 'https://github.com/smhirmak/shopping-cart-app',
-    webapp: 'https://shopping-cart-app-xi.vercel.app/'
+    webapp: 'https://shopping-cart-app-smhirmak.vercel.app/'
   },
   {
     id: 1,
