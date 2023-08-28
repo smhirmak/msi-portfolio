@@ -1,6 +1,6 @@
 export const Bio = {
   name: 'Muhammed Semih',
-  roles: ['Fronend Developer', 'Programmer', 'Engineer'],
+  roles: ['Frontend Developer', 'Programmer', 'Engineer'],
   description:
     "I'm a motivated Frontend Developer skilled in React, JavaScript, TypeScript, HTML, CSS, and Next.js. With a passion for learning and a growth mindset, I'm committed to delivering high-quality results and creating a significant impact. Ready to collaborate and bring creative projects to life.",
   github: 'https://github.com/smhirmak',
@@ -160,7 +160,7 @@ export const projects = [
     description:
       'This project is a demo e-commerce website and developed using React, NextJS, TypeScript, Material UI.',
     image:
-      'https://private-user-images.githubusercontent.com/42941265/263490719-74da8955-8cde-4398-9ea4-8ae87aa55ce6.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTMwNzMzMDYsIm5iZiI6MTY5MzA3MzAwNiwicGF0aCI6Ii80Mjk0MTI2NS8yNjM0OTA3MTktNzRkYTg5NTUtOGNkZS00Mzk4LTllYTQtOGFlODdhYTU1Y2U2LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFJV05KWUFYNENTVkVINTNBJTJGMjAyMzA4MjYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjMwODI2VDE4MDMyNlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTc2YTMwYmNmODVjMzkzZmFiMjUxNmQ3MDFmMjQ5YWNhYzczNDJhMjQ0NmMyNDFhYzAzMWE4NWRkYzJlNjU2OTQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.xMaDHdLSwnG8UnztESe3aSMdoRzxH5QdyDnZzJSZG1k',
+      'https://user-images.githubusercontent.com/42941265/263745812-0809baba-6443-4f73-a309-dd5469948415.png',
     tags: ['React Js', 'Next.js', 'TypeScript', 'HTML', 'CSS', 'Material UI'],
     category: 'web app',
     github: 'https://github.com/smhirmak/shopping-cart-app',

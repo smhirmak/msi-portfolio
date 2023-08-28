@@ -191,16 +191,16 @@ const ResumeButton = styled(Link)`
   font-size: 20px;
   font-weight: 600;
   transition: all 0.2s ease-in-out !important;
-  background: hsla(220, 100%, 41%, 1);
-  background: linear-gradient(280deg, hsla(0, 100%, 45%, 1) 0%, hsla(220, 100%, 41%, 1) 100%);
+  background: hsla(220, 100%, 50%, 1);
+  background: linear-gradient(280deg, hsla(0, 100%, 50%, 1) 0%, hsla(220, 100%, 50%, 1) 100%);
   background: -moz-linear-gradient(
     280deg,
-    hsla(0, 100%, 45%, 1) 0%,
+    hsla(0, 100%, 50%, 1) 0%,
     hsla(220, 100%, 41%, 45%, 1) 100%
   );
   background: -webkit-linear-gradient(
     280deg,
-    hsla(0, 100%, 45%, 1) 0%,
+    hsla(0, 100%, 50%, 1) 0%,
     hsla(220, 100%, 41%, 1) 100%
   );
   box-shadow: 20px 20px 60px #1f2634;

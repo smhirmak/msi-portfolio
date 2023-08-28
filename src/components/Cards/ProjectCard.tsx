@@ -89,40 +89,44 @@ const Desc = styled.div`
   max-width: 100%;
 `;
 
-const WebLinks = styled.span`
-  padding-top: 8px;
-`;
-
-const WebsiteLink = styled(Link)`
-  font-size: 16px;
-  font-weight: 400;
-  padding: 2px 8px;
-  border-radius: 10px;
-
-  color: ${({ theme }) => theme.white + 99};
-  transition: all 0.2s ease-in;
-  border: 1px solid ${({ theme }) => theme.button};
-
-  &:hover {
-    background-color: ${({ theme }) => theme.primary + 99};
-    color: ${({ theme }) => theme.white};
-  }
-`;
-
-const Members = styled.div`
+const ButtonGroup = styled.div`
   display: flex;
-  align-items: center;
-  padding-left: 10px;
+  justify-content: flex-end;
+  margin: 12px 0px;
+  gap: 12px;
 `;
+interface Props {
+  dull?: any;
+  theme?: any;
+}
 
-const Avatar = styled.img`
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  margin-left: -10px;
-  background-color: ${({ theme }) => theme.white};
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  border: 3px solid ${({ theme }) => theme.card};
+const Button = styled.a<Props>`
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: ${({ theme }) => theme.text_primary};
+  padding: 12px 16px;
+  border-radius: 8px;
+  background-color: ${({ theme }) => theme.primary + 60};
+  ${({ dull, theme }) =>
+    dull &&
+    `
+        background-color: ${theme.bgLight};
+        color: ${theme.text_secondary};
+        &:hover {
+            background-color: ${({ theme }: any) => theme.bg + 75};
+        }
+    `}
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color: ${({ theme }) => theme.primary};
+  }
+  @media only screen and (max-width: 600px) {
+    font-size: 12px;
+  }
 `;
 
 const ProjectCard: React.FC<{ project: any }> = ({ project }) => {
@@ -139,11 +143,14 @@ const ProjectCard: React.FC<{ project: any }> = ({ project }) => {
         <Date>{project.date}</Date>
         <Desc>{project.description}</Desc>
       </Details>
-      <WebLinks>
-        <WebsiteLink href={project.webapp} target="display">
-          Website Link
-        </WebsiteLink>
-      </WebLinks>
+      <ButtonGroup>
+        <Button href={project?.github} target="new">
+          View Code
+        </Button>
+        <Button href={project?.webapp} target="new">
+          View Live App
+        </Button>
+      </ButtonGroup>
     </Card>
   );
 };

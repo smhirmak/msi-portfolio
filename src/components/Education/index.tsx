@@ -17,7 +17,7 @@ const Container = styled.div`
   z-index: 1;
   align-items: center;
   padding: 60px 0px 80px 0px;
-
+  cursor: default;
   @media (max-width: 960px) {
     padding: 60px 0px;
   }

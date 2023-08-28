@@ -26,6 +26,7 @@ const Logo = styled.h1`
   font-weight: 600;
   font-size: 20px;
   color: ${({ theme }) => theme.primary};
+  cursor: default;
 `;
 
 const Nav = styled.nav`

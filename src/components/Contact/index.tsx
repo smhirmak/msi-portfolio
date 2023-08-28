@@ -37,6 +37,7 @@ const Title = styled.div`
   text-align: center;
   font-weight: 600;
   margin-top: 20px;
+  cursor: default;
   color: ${({ theme }) => theme.text_primary};
   @media (max-width: 768px) {
     margin-top: 12px;
@@ -48,6 +49,7 @@ const Desc = styled.div`
   font-size: 18px;
   text-align: center;
   max-width: 600px;
+  cursor: default;
   color: ${({ theme }) => theme.text_secondary};
   @media (max-width: 768px) {
     margin: 12px 15px 0;
@@ -72,6 +74,7 @@ const ContactTitle = styled.div`
   font-size: 24px;
   margin-bottom: 6px;
   font-weight: 600;
+  cursor: default;
   color: ${({ theme }) => theme.text_primary};
 `;
 
@@ -107,16 +110,16 @@ const ContactButton = styled.input`
   width: 100%;
   text-decoration: none;
   text-align: center;
-  background: hsla(220, 100%, 41%, 1);
-  background: linear-gradient(280deg, hsla(0, 100%, 45%, 1) 0%, hsla(220, 100%, 41%, 1) 100%);
+  background: hsla(220, 100%, 50%, 1);
+  background: linear-gradient(280deg, hsla(0, 100%, 50%, 1) 0%, hsla(220, 100%, 50%, 1) 100%);
   background: -moz-linear-gradient(
     280deg,
-    hsla(0, 100%, 45%, 1) 0%,
+    hsla(0, 100%, 50%, 1) 0%,
     hsla(220, 100%, 41%, 45%, 1) 100%
   );
   background: -webkit-linear-gradient(
     280deg,
-    hsla(0, 100%, 45%, 1) 0%,
+    hsla(0, 100%, 50%, 1) 0%,
     hsla(220, 100%, 41%, 1) 100%
   );
   padding: 13px 16px;

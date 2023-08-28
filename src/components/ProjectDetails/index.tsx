@@ -104,87 +104,6 @@ const Tag = styled.div`
   }
 `;
 
-const Members = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin: 12px 6px;
-  @media only screen and (max-width: 600px) {
-    margin: 4px 6px;
-  }
-`;
-
-const Member = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-`;
-
-const MemberImage = styled.img`
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 4px;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.3);
-  @media only screen and (max-width: 600px) {
-    width: 32px;
-    height: 32px;
-  }
-`;
-
-const MemberName = styled.div`
-  font-size: 16px;
-  font-weight: 500;
-  width: 200px;
-  color: ${({ theme }) => theme.text_primary};
-  @media only screen and (max-width: 600px) {
-    font-size: 14px;
-  }
-`;
-
-const ButtonGroup = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin: 12px 0px;
-  gap: 12px;
-`;
-
-interface Props {
-  dull?: any;
-  theme?: any;
-}
-
-const Button = styled.a<Props>`
-  width: 100%;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 600;
-  color: ${({ theme }) => theme.text_primary};
-  padding: 12px 16px;
-  border-radius: 8px;
-  background-color: ${({ theme }) => theme.primary};
-  ${({ dull, theme }) =>
-    dull &&
-    `
-        background-color: ${theme.bgLight};
-        color: ${theme.text_secondary};
-        &:hover {
-            background-color: ${({ theme }: any) => theme.bg + 99};
-        }
-    `}
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.5s ease;
-  &:hover {
-    background-color: ${({ theme }) => theme.primary + 99};
-  }
-  @media only screen and (max-width: 600px) {
-    font-size: 12px;
-  }
-`;
-
 const ProjectDetails: React.FC<{ openModal: any; setOpenModal: any }> = ({
   openModal,
   setOpenModal
@@ -212,39 +131,6 @@ const ProjectDetails: React.FC<{ openModal: any; setOpenModal: any }> = ({
             ))}
           </Tags>
           <Desc>{project?.description}</Desc>
-          {project.member && (
-            <>
-              <Label>Members</Label>
-              <Members>
-                {project?.member.map((member: any) => (
-                  <Member key={member.name}>
-                    <MemberImage src={member.img} />
-                    <MemberName>{member.name}</MemberName>
-                    <a
-                      href={member.github}
-                      target="new"
-                      style={{ textDecoration: 'none', color: 'inherit' }}>
-                      <GitHub />
-                    </a>
-                    <a
-                      href={member.linkedin}
-                      target="new"
-                      style={{ textDecoration: 'none', color: 'inherit' }}>
-                      <LinkedIn />
-                    </a>
-                  </Member>
-                ))}
-              </Members>
-            </>
-          )}
-          <ButtonGroup>
-            <Button dull href={project?.github} target="new">
-              View Code
-            </Button>
-            <Button href={project?.webapp} target="new">
-              View Live App
-            </Button>
-          </ButtonGroup>
         </Wrapper>
       </Container>
     </Modal>
