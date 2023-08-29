@@ -6,7 +6,7 @@ This project is my personal portfolio.
 
 ## Demo
 
-[semihirmak.com](https://www.semihirmak.com/)
+https://semihirmak.com/ 
 
 
 ## Tech Stack
