@@ -35,7 +35,9 @@ export default function Home() {
         <title>Muhammed Semih Irmak</title>
         <meta name="description" content="Muhammed Semih Irmak - Portfolio" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/logo-2.ico" />
+        <meta lang="en" />
+        <link rel="icon" href="/logo.ico" />
+        <link rel="apple-touch-icon" href="apple-touch-icon.png"></link>
       </Head>
       <ThemeProvider theme={darkTheme}>
         <PreLoader />
