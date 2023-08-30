@@ -109,6 +109,7 @@ const GithubButton = styled(Link)`
   border: 1.8px solid ${({ theme }) => theme.primary};
   border-radius: 20px;
   display: flex;
+  text-decoration: none;
   justify-content: center;
   align-items: center;
   padding: 0px 20px;

@@ -18,13 +18,11 @@
     "@types/node": "20.5.3",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
-    "autoprefixer": "10.4.15",
     "emailjs": "^4.0.2",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
     "gsap": "^3.12.2",
     "next": "13.4.19",
-    "postcss": "8.4.28",
     "prettier": "^3.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -35,12 +33,10 @@
     "typewriter-effect": "^2.20.1"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
     "eslint": "8.37.0",
     "eslint-config-next": "^13.2.4",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "postcss": "^8.4.23",
     "prettier": "^2.8.8"
   }
 }
