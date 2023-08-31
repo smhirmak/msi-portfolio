@@ -1,16 +1,7 @@
 /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   reactStrictMode: false
-// };
 
-// module.exports = {
-//   compiler: {
-//     // Enables the styled-components SWC transform
-//     styledComponents: true
-//   }
-// };
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   swcMinify: true,
   i18n: {
     locales: ['en'],

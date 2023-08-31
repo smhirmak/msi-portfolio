@@ -13,8 +13,8 @@ const Page500 = () => {
         <link rel="apple-touch-icon" href="apple-touch-icon.png"></link>
       </Head>
       <div id="notfound">
-        <div class="notfound">
-          <div class="notfound-404">
+        <div className="notfound">
+          <div className="notfound-404">
             <h1>500</h1>
             <h2>Internal Server Error</h2>
           </div>

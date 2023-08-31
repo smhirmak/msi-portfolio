@@ -295,7 +295,7 @@ const Hero = () => {
             </ResumeButton>
           </HeroLeftContainer>
           <HeroRightContainer>
-            <HeroImage src={HeroImg} alt="Hero" />
+            <HeroImage priority={true} src={HeroImg} alt="Hero" />
             <HeroBg>
               <HeroBgAnimation />
             </HeroBg>

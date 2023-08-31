@@ -1,4 +1,4 @@
-import { preLoaderAnim } from '@/components/animations/index';
+import { PreLoaderAnim } from '@/components/animations/index';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 
@@ -39,7 +39,7 @@ const Text = styled.span`
 
 const PreLoader = () => {
   useEffect(() => {
-    preLoaderAnim();
+    PreLoaderAnim();
   }, []);
   return (
     <Container className="preloader">

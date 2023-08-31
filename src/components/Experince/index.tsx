@@ -73,7 +73,7 @@ const Experince = () => {
         <TimeLineSection>
           <Timeline>
             {experiences.map((experience, index) => (
-              <TimelineItem key={experience.img}>
+              <TimelineItem key={experience.id}>
                 <TimelineSeparator>
                   <TimelineDot variant="outlined" color="error" />
                   {index !== experiences.length - 1 && <TimelineConnector />}

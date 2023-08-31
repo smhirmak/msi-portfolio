@@ -2,7 +2,7 @@ import gsap from 'gsap';
 
 const tl = gsap.timeline();
 
-export const preLoaderAnim = () => {
+export const PreLoaderAnim = () => {
   tl.to('.texts-container', {
     duration: 0,
     opacity: 1,
@@ -30,7 +30,7 @@ export const preLoaderAnim = () => {
         duration: 2,
         ease: 'Power3.easeOut',
         opacity: 0,
-        onComplete: mobileLanding(),
+        onComplete: MobileLanding(),
         delay: 0.15
       },
       '-=2'
@@ -42,7 +42,7 @@ export const preLoaderAnim = () => {
     });
 };
 
-export const mobileLanding = () => {
+export const MobileLanding = () => {
   window.innerWidth < 763 &&
     tl.from('.landing__main2', {
       duration: 1,
