@@ -264,7 +264,7 @@ const NavBar = () => {
               color: 'white',
               width: 'max-content'
             }}
-            href="/"
+            href={Bio.github}
             target="display">
             Github Profile
           </GithubButton>

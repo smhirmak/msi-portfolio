@@ -10,7 +10,7 @@ import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import { darkTheme } from '@/utils/Themes';
 import Head from 'next/head';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 
 const Body = styled.div`
