@@ -12,6 +12,9 @@ const Container = styled.div`
   align-items: center;
   padding-top: 60px;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 98%, 0 100%);
+  @media screen and (max-width: 640px) {
+    padding-top: 60px;
+  }
 `;
 const Wrapper = styled.div`
   max-width: 1350px;

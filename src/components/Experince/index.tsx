@@ -18,7 +18,7 @@ const Container = styled.div`
   padding: 60px 0px 80px 0px;
 
   @media (max-width: 960px) {
-    padding: 60px 0px;
+    padding: 70px 0px;
   }
 `;
 const Wrapper = styled.div`
