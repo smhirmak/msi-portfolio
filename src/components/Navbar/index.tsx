@@ -120,21 +120,10 @@ const GithubButton = styled(Link)`
   cursor: pointer;
   &:hover {
     background-color: ${({ theme }) => theme.primary};
-    border: 1.8px solid ${({ theme }) => theme.primary};
     color: ${({ theme }) => theme.white};
   }
   @media screen and (max-width: 640px) {
     font-size: 0.8rem;
-  }
-`;
-
-const Span = styled.span`
-  padding: 0 4px;
-  font-weight: bold;
-  font-size: 28px;
-
-  @media screen and (max-width: 640px) {
-    font-size: 25px;
   }
 `;
 
@@ -197,7 +186,6 @@ const NavBar = () => {
               marginBottom: '20',
               cursor: 'pointer'
             }}>
-            {/* <Span>Muhammed Semih Irmak</Span> */}
             <LogoImage src={Logo} alt="SEMIHIRMAK" />
           </div>
         </NavLogo>
