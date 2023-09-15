@@ -68,6 +68,10 @@ export const skills = [
     title: 'Backend',
     skills: [
       {
+        name: 'Node.js',
+        image: 'https://static-00.iconduck.com/assets.00/node-js-icon-227x256-913nazt0.png'
+      },
+      {
         name: 'MongoDB',
         image:
           'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg'

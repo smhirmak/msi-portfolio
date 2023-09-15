@@ -99,7 +99,7 @@ const SkillItem = styled.div`
   justify-content: center;
   font-size: 16px;
   color: ${({ theme }) => theme.text_primary + 80};
-  border: 1px solid ${({ theme }) => theme.text_primary + 80};
+  border: 1px solid ${({ theme }) => theme.text_primary + 99};
 
   border-radius: 12px;
   padding: 12px 16px;
