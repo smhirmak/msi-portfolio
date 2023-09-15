@@ -86,7 +86,7 @@ const Education = () => {
                 </TimelineContent>
                 <TimelineSeparator>
                   <TimelineDot variant="outlined" color="error" />
-                  {index !== experiences.length && <TimelineConnector />}
+                  {index !== educations.length - 1 && <TimelineConnector />}
                 </TimelineSeparator>
               </TimelineItem>
             ))}

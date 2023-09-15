@@ -96,6 +96,7 @@ const ContactInputMessage = styled.textarea`
   background-color: transparent;
   border: 1px solid ${({ theme }) => theme.text_secondary};
   outline: none;
+  resize: none;
   font-size: 18px;
   color: ${({ theme }) => theme.text_primary};
   border-radius: 12px;

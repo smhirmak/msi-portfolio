@@ -15,7 +15,7 @@ const Card = styled.div`
   flex-direction: column;
   gap: 14px;
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
     filter: drop-shadow(0 0 0.3rem ${({ theme }) => theme.primary});
   }
 `;
@@ -107,7 +107,7 @@ const Button = styled.a<Props>`
   color: ${({ theme }) => theme.text_primary};
   padding: 12px 16px;
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.primary + 60};
+  background-color: ${({ theme }) => theme.primary + 99};
   ${({ dull, theme }) =>
     dull &&
     `
