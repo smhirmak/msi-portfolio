@@ -72,6 +72,11 @@ export const skills = [
         image: 'https://static-00.iconduck.com/assets.00/node-js-icon-227x256-913nazt0.png'
       },
       {
+        name: 'Express.js',
+        image:
+          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLA972a1NXwGHTIpgjxpRdu1DD5te1evggDgjNvM_FcbtGxaPYrHbV27RNzJSA_ZhrY28&usqp=CAU'
+      },
+      {
         name: 'MongoDB',
         image:
           'https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg'

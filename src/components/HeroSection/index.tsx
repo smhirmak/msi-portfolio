@@ -13,9 +13,9 @@ const HeroContainer = styled.div`
   display: flex;
   justify-content: center;
   position: relative;
-  padding: 80px 30px;
+  padding: 60px 30px;
   @media screen and (max-width: 960px) {
-    padding: 66px 16px;
+    padding: 60px 16px;
   }
   @media screen and (max-width: 640px) {
     padding: 32px 16px;
@@ -257,10 +257,11 @@ const Hero = () => {
             </TextLoop>
             <SubTitle>
               I`m a motivated Frontend Developer skilled in{' '}
-              <TextSpan>React, JavaScript, TypeScript, HTML, CSS and Next.js</TextSpan>. With a
-              passion for learning and a growth mindset, I`m committed to delivering high-quality
-              results and creating a significant impact. Ready to collaborate and bring creative
-              projects to life.
+              <TextSpan>React, JavaScript, TypeScript, HTML, CSS and Next.js</TextSpan>. I am
+              currently learning <TextSpan>Node.js and Express.js</TextSpan>, which are Backend
+              Technologies. With a passion for learning and a growth mindset, I`m committed to
+              delivering high-quality results and creating a significant impact. Ready to
+              collaborate and bring creative projects to life.
             </SubTitle>
             <SocialMediaIcons>
               <SocialMediaIcon href={Bio.linkedin} target="display">
