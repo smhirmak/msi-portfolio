@@ -1,6 +1,6 @@
 export const Bio = {
   name: 'Muhammed Semih',
-  roles: ['Frontend Developer', 'Programmer', 'Engineer'],
+  roles: ['Frontend Developer', 'Web Developer', 'Programmer', 'Engineer'],
   github: 'https://github.com/smhirmak',
   resume: 'https://drive.google.com/file/d/10Z0iCsumQlQxjLck1wEGkwyCWAgv_pK8/view?usp=drive_link',
   linkedin: 'https://www.linkedin.com/in/muhammed-semih-irmak-307890152/'
