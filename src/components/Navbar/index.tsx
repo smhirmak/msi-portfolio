@@ -61,9 +61,9 @@ const MenuIcon = styled.div`
   @media screen and (max-width: 768px) {
     display: block;
     position: absolute;
-    top: 5px;
+    top: 0;
     right: 0;
-    transform: translate(-80%, 50%);
+    transform: translate(-80%, 40%);
     font-size: 1.5rem;
     cursor: pointer;
     color: ${({ theme }) => theme.text_primary};
@@ -196,6 +196,7 @@ const NavBar = () => {
             }}
           />
         </MenuIcon>
+
         <NavItems>
           <NavLink href="#about" onClick={topFunction}>
             About
