@@ -245,6 +245,13 @@ const NavBar = () => {
             }}>
             Education
           </MobileMenuLinks>
+          <MobileMenuLinks
+            href="#contact"
+            onClick={() => {
+              setOpen(!open);
+            }}>
+            Contact
+          </MobileMenuLinks>
           <GithubButton
             style={{
               padding: '10px 16px',
