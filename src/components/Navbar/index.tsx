@@ -141,11 +141,11 @@ const MobileMenu = styled.div<Props>`
   right: 0;
   width: 100%;
   padding: 42px 40px 24px 40px;
-  background: ${({ theme }) => theme.card_light + 99};
+  background: rgba(25, 25, 36, 0.9);
   transition: all 0.3s ease-in-out;
   transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
   border-radius: 0 0 20px 20px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 10px rgba(148, 148, 148, 0.3);
   opacity: ${({ open }) => (open ? '1' : '0')};
   z-index: ${({ open }) => (open ? '1' : '-1')};
 `;
