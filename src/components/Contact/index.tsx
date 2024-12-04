@@ -1,7 +1,10 @@
+import { contactValidationSchema } from '@/constants/Validations';
 import emailjs from '@emailjs/browser';
 import { Portal, Snackbar } from '@mui/material';
+import { Form, Formik, useFormik } from 'formik';
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
+import FormikInput from '../formikInputs/FormikInput';
 
 const Container = styled.div`
   display: flex;
@@ -148,29 +151,54 @@ const Contact = () => {
       }
     );
   };
+
+  const formik = useFormik({
+    enableReinitialize: true,
+    validationSchema: contactValidationSchema,
+    initialValues: {
+      email: '',
+      name: '',
+      subject: '',
+      message: '',
+    },
+    onSubmit: async (values, { resetForm }) => {
+      emailjs.send('service_5dvhbjd', 'template_nm4l82i', values, 'lkrFFPph0bI0oKQRR').then(
+        (result) => {
+          setOpen(true);
+          setResponseMessage('Email sent successfully!');
+          resetForm();
+        },
+        (error) => {
+          setOpen(true);
+        }
+      );
+      // setLoading(true);
+      // try {
+      //   await login(values);
+      // } finally {
+      //   setLoading(false);
+      // }
+    },
+    validateOnChange: false,
+    validateOnBlur: false,
+    validateOnMount: false,
+  });
+
   return (
     <Container id="contact">
       <Wrapper>
         <Title>Contact</Title>
         <Desc>Feel free to reach out to me for any questions or opportunities!</Desc>
-        <ContactForm ref={form} onSubmit={handleSubmit}>
+        <Formik initialValues={formik.initialValues} onSubmit={formik.submitForm} onReset={formik.handleReset}>
+        <Form className="flex w-5/6 flex-col md:w-2/3">
           <ContactTitle>Contact Me</ContactTitle>
-          <ContactInput
-            placeholder="Your Email"
-            type="email"
-            name="email"
-            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-          />
-          <ContactInput
-            placeholder="Your Name"
-            type="text"
-            name="name"
-            title="Invalid email address"
-          />
-          <ContactInput placeholder="Subject" name="subject" />
-          <ContactInputMessage placeholder="Message" rows={4} name="message" />
+          <FormikInput id='email' formik={formik} label='Your Email'  />
+          <FormikInput id='name'  formik={formik} label='Your Name'  />
+          <FormikInput id='subject' formik={formik} label='Subject'  />
+          <FormikInput id='message' rows={4} multiline formik={formik} label='Message'  />
           <ContactButton type="submit" value="Send" />
-        </ContactForm>
+        </Form>
+        </Formik>
         <Portal>
           <Snackbar
             open={open}

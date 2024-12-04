@@ -39,7 +39,7 @@ export default function Home() {
         <link rel="apple-touch-icon" href="apple-touch-icon.png"></link>
       </Head>
       <ThemeProvider theme={darkTheme}>
-        <PreLoader />
+        {/* <PreLoader /> */}
         <NavBar />
         <Body>
           <Hero />
