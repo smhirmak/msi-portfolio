@@ -4,162 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
-import styled, { useTheme } from 'styled-components';
-
-const Nav = styled.div`
-  background-color: ${({ theme }) => theme.card_light};
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  @media screen and (max-width: 960px) {
-    transition: 0.8s all ease;
-  }
-`;
-const NavContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  height: 60px;
-  z-index: 1;
-  width: 100%;
-  /* padding: 0 24px 0 0; */
-  max-width: 1200px;
-`;
-const NavLogo = styled(Link)`
-  width: 100%;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  @media (max-width: 640px) {
-    padding: 0;
-    display: flex;
-    position: absolute;
-    align-items: center;
-    justify-content: center;
-    top: 16px;
-  }
-`;
-
-const LogoImage = styled(Image)`
-  width: 280px;
-  height: 30px;
-
-  @media screen and (max-width: 640px) {
-    width: 251px;
-    height: 27px;
-  }
-`;
-
-const MenuIcon = styled.div`
-  display: none;
-  @media screen and (max-width: 768px) {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(-80%, 40%);
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: ${({ theme }) => theme.text_primary};
-  }
-`;
-const NavItems = styled.ul`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 32px;
-  list-style: none;
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-`;
-const NavLink = styled.a`
-  color: ${({ theme }) => theme.text_primary};
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
-  &:hover {
-    color: ${({ theme }) => theme.primary};
-  }
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: end;
-  width: 80%;
-  height: 100%;
-  padding: 0 6px;
-  @media screen and (max-width: 640px) {
-    display: none;
-  }
-`;
-
-const GithubButton = styled(Link)`
-  background-color: transparent;
-  color: ${({ theme }) => theme.primary};
-  border: 1.8px solid ${({ theme }) => theme.primary};
-  border-radius: 20px;
-  display: flex;
-  text-decoration: none;
-  justify-content: center;
-  align-items: center;
-  padding: 0px 20px;
-  height: 70%;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: all 0.2s ease-in-out;
-  cursor: pointer;
-  &:hover {
-    background-color: ${({ theme }) => theme.primary};
-    color: ${({ theme }) => theme.white};
-  }
-  @media screen and (max-width: 640px) {
-    font-size: 0.8rem;
-  }
-`;
-
-interface Props {
-  open?: boolean;
-}
-
-const MobileMenu = styled.div<Props>`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 16px;
-  position: absolute;
-  top: 80px;
-  right: 0;
-  width: 100%;
-  padding: 42px 40px 24px 40px;
-  background: rgba(25, 25, 36, 0.9);
-  transition: all 0.3s ease-in-out;
-  transform: ${({ open }) => (open ? 'translateX(0)' : 'translateX(100%)')};
-  border-radius: 0 0 20px 20px;
-  box-shadow: 0 5px 10px rgba(148, 148, 148, 0.3);
-  opacity: ${({ open }) => (open ? '1' : '0')};
-  z-index: ${({ open }) => (open ? '1' : '-1')};
-`;
-
-const MobileMenuLinks = styled(Link)`
-  color: ${({ theme }) => theme.text_primary};
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
-  &:hover {
-    color: ${({ theme }) => theme.primary};
-  }
-`;
 
 const NavBar = () => {
   function topFunction() {
@@ -167,17 +11,16 @@ const NavBar = () => {
     document.documentElement.scrollTop = 0;
   }
   function mobileMenu() {
-    setOpen(!open);
+    setOpen(prev => !prev);
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
   }
 
   const [open, setOpen] = useState<boolean>(false);
-  const theme = useTheme();
   return (
-    <Nav>
-      <NavContainer>
-        <NavLogo href="/">
+    <div className='bg-card-light h-20 flex justify-center items-center text-base sticky top-0 z-10 transition-all'>
+      <div className='flex justify-between h-16 z-1 w-full max-w-[1200px]'>
+        <Link className='w-full p-0 flex justify-center items-center no-underline absolute top-4 md:relative md:top-0' href="/">
           <div
             style={{
               display: 'flex',
@@ -186,87 +29,79 @@ const NavBar = () => {
               marginBottom: '20',
               cursor: 'pointer'
             }}>
-            <LogoImage src={Logo} alt="SEMIHIRMAK" />
+            <Image className='w-[251px] h-[27px] md:w-[280px] md:h-[30px]' src={Logo} alt="SEMIHIRMAK" />
           </div>
-        </NavLogo>
-        <MenuIcon>
+        </Link>
+        <div className='md:hidden block absolute top-4 right-0 -translate-x-[80%] translate-y-[0%] text-2xl cursor-pointer text-text-primary'>
           <FaBars
             onClick={() => {
-              setOpen(!open);
+              setOpen(prev => !prev);
             }}
           />
-        </MenuIcon>
+        </div>
 
-        <NavItems>
-          <NavLink href="#about" onClick={topFunction}>
+        <ul className='w-full hidden md:flex justify-center items-center gap-8 list-none [&>a]:text-text-primary [&>a]:font-medium [&>a]:cursor-pointer [&>a]:no-underline [&>a]:transition-all'>
+          <a href="#about" className='hover:text-primary' onClick={topFunction}>
             About
-          </NavLink>
-          <NavLink href="#skills">Skills</NavLink>
-          <NavLink href="#experience">Experience</NavLink>
-          <NavLink href="#projects">Projects</NavLink>
-          <NavLink href="#education">Education</NavLink>
-          <NavLink href="#contact">Contact</NavLink>
-        </NavItems>
-        <ButtonContainer>
-          <GithubButton href={Bio.github} target="display">
+          </a>
+          <a className='hover:text-primary' href="#skills">Skills</a>
+          <a className='hover:text-primary' href="#experience">Experience</a>
+          <a className='hover:text-primary' href="#projects">Projects</a>
+          <a className='hover:text-primary' href="#education">Education</a>
+          <a className='hover:text-primary' href="#contact">Contact</a>
+        </ul>
+        <div className='hidden md:flex items-center justify-end w-[80%] py-0 px-2'>
+          <Link className='bg-transparent text-primary border-[1.8px] border-primary rounded-2xl flex no-underline justify-center items-center py-0 px-5 h-[70%] text-xs md:text-base font-medium transition-all cursor-pointer hover:bg-primary hover:text-white' href={Bio.github} target="display">
             Github Profile
-          </GithubButton>
-        </ButtonContainer>
-      </NavContainer>
-      {open && (
-        <MobileMenu open={open}>
-          <MobileMenuLinks href="#about" onClick={mobileMenu}>
-            About
-          </MobileMenuLinks>
-          <MobileMenuLinks
-            href="#skills"
-            onClick={() => {
-              setOpen(!open);
-            }}>
-            Skills
-          </MobileMenuLinks>
-          <MobileMenuLinks
-            href="#experience"
-            onClick={() => {
-              setOpen(!open);
-            }}>
-            Experience
-          </MobileMenuLinks>
-          <MobileMenuLinks
-            href="#projects"
-            onClick={() => {
-              setOpen(!open);
-            }}>
-            Projects
-          </MobileMenuLinks>
-          <MobileMenuLinks
-            href="#education"
-            onClick={() => {
-              setOpen(!open);
-            }}>
-            Education
-          </MobileMenuLinks>
-          <MobileMenuLinks
-            href="#contact"
-            onClick={() => {
-              setOpen(!open);
-            }}>
-            Contact
-          </MobileMenuLinks>
-          <GithubButton
-            style={{
-              padding: '10px 16px',
-              background: `${theme.primary}`,
-              color: 'white',
-              width: 'max-content'
-            }}
-            href={Bio.github}
-            target="display">
-            Github Profile
-          </GithubButton>
-        </MobileMenu>
-      )}
-    </Nav>
+          </Link>
+        </div>
+      </div>
+      <div data-open={open} className='flex flex-col justify-center gap-4 absolute top-20 right-0 w-full pt-[42px] px-10 pb-6 bg-[rgba(25,25,36,0.9)] transition-all data-[open=false]:translate-x-0 rounded-b-2xl shadow-2xl data-[open=true]:opacity-100 data-[open=false]:opacity-0 data-[open=true]:z-1 data-[open=false]:-z-1 data-[open=false]:hidden'>
+        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary' href="#about" onClick={mobileMenu}>
+          About
+        </Link>
+        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
+          href="#skills"
+          onClick={() => {
+            setOpen(prev => !prev);
+          }}>
+          Skills
+        </Link>
+        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
+          href="#experience"
+          onClick={() => {
+            setOpen(prev => !prev);
+          }}>
+          Experience
+        </Link>
+        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
+          href="#projects"
+          onClick={() => {
+            setOpen(prev => !prev);
+          }}>
+          Projects
+        </Link>
+        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
+          href="#education"
+          onClick={() => {
+            setOpen(prev => !prev);
+          }}>
+          Education
+        </Link>
+        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
+          href="#contact"
+          onClick={() => {
+            setOpen(prev => !prev);
+          }}>
+          Contact
+        </Link>
+        <Link className='bg-primary w-full text-white border-[1.8px] border-primary rounded-2xl flex no-underline justify-center items-center py-2.5 px-4 h-[70%] text-xs md:text-base font-medium transition-all cursor-pointer hover:bg-transparent hover:text-primary'
+          href={Bio.github}
+          target="display">
+          Github Profile
+        </Link>
+      </div>
+    </div>
   );
 };
 

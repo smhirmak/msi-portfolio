@@ -1,8 +1,11 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
 * {
   box-sizing: border-box;
@@ -19,6 +22,30 @@ body {
   margin: 0px !important;
   padding: 0;
   font-family: 'Montserrat', sans-serif;
+}
+
+:root {
+  --bg: #1C1C27;
+  --bg-light: #1C1E27;
+  --primary: #D82626;
+  --secondary: #0045D1;
+  --text-primary: #F2F3F4;
+  --text-secondary: #b1b2b3;
+  --card: #171721;
+  --card-light: #191924;
+  --button: #D82626;
+  --white: #FFFFFF;
+  --black: #000000;
+}
+
+.dark {
+  --bg: #FFFFFF;
+  --bg-light: #f0f0f0;
+  --primary: #be1adb;
+  --text-primary: #111111;
+  --text-secondary: #48494a;
+  --card: #FFFFFF;
+  --button: #5c5b5b;
 }
 
 /* width */

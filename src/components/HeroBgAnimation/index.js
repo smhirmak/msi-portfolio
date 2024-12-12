@@ -1,12 +1,6 @@
-import styled from 'styled-components';
-
-const Div = styled.div`
-  width: 500px;
-  height: 500px;
-`;
 
 const HeroBgAnimation = () => (
-  <Div>
+  <div className='w-[500px] h-[500px]'>
     <svg
       className="BgAnimation__svg"
       viewBox="0 0 602 602"
@@ -287,7 +281,7 @@ const HeroBgAnimation = () => (
         </linearGradient>
       </defs>
     </svg>
-  </Div>
+  </div>
 );
 
 export default HeroBgAnimation;

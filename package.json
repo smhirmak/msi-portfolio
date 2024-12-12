@@ -21,6 +21,7 @@
     "emailjs": "^4.0.2",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.19",
+    "formik": "^2.4.6",
     "gsap": "^3.12.2",
     "next": "13.4.19",
     "prettier": "^3.0.2",
@@ -30,13 +31,17 @@
     "react-router-dom": "^6.15.0",
     "styled-components": "^6.0.7",
     "typescript": "5.1.6",
-    "typewriter-effect": "^2.20.1"
+    "typewriter-effect": "^2.20.1",
+    "yup": "^1.5.0"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.20",
     "eslint": "8.37.0",
     "eslint-config-next": "^13.2.4",
     "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.8"
+    "postcss": "^8.4.49",
+    "prettier": "^2.8.8",
+    "tailwindcss": "^3.4.16"
   }
 }
