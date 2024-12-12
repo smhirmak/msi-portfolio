@@ -5,30 +5,15 @@ import Footer from '@/components/Footer';
 import Hero from '@/components/HeroSection';
 import NavBar from '@/components/Navbar';
 import PreLoader from '@/components/PreLoader/PreLoader';
-import ProjectDetails from '@/components/ProjectDetails';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import { darkTheme } from '@/utils/Themes';
 import Head from 'next/head';
 import React, { useState } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 
-const Body = styled.div`
-  background-color: ${({ theme }) => theme.bg};
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-`;
-
-const Wrapper = styled.div`
-  background: linear-gradient(38.73deg, rgba(204, 0, 0, 0.15) 0%, rgba(194, 24, 24, 0) 50%),
-    linear-gradient(141.27deg, rgba(0, 70, 209, 0) 50%, rgba(0, 70, 209, 0.15) 100%);
-  width: 100%;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%);
-`;
 
 export default function Home() {
-  const [openModal, setOpenModal] = useState({ state: false, project: null });
   return (
     <>
       <Head>
@@ -39,22 +24,25 @@ export default function Home() {
         <link rel="apple-touch-icon" href="apple-touch-icon.png"></link>
       </Head>
       <ThemeProvider theme={darkTheme}>
-        {/* <PreLoader /> */}
+        <PreLoader />
         <NavBar />
-        <Body>
+        <div className='bg-bg w-full h-full overflow-hidden'>
           <Hero />
-          <Wrapper>
+          <div className='w-full' style={{ 
+            background: 'linear-gradient(38.73deg, rgba(204, 0, 0, 0.15) 0%, rgba(194, 24, 24, 0) 50%), linear-gradient(141.27deg, rgba(0, 70, 209, 0) 50%, rgba(0, 70, 209, 0.15) 100%)',
+           clipPath: 'polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%)'}}>
             <Skills />
             <Experince />
-          </Wrapper>
+          </div>
           <Projects />
-          <Wrapper>
+          <div className='w-full' style={{ 
+            background: 'linear-gradient(38.73deg, rgba(204, 0, 0, 0.15) 0%, rgba(194, 24, 24, 0) 50%), linear-gradient(141.27deg, rgba(0, 70, 209, 0) 50%, rgba(0, 70, 209, 0.15) 100%)',
+           clipPath: 'polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%)'}}>
             <Education />
             <Contact />
-          </Wrapper>
+          </div>
           <Footer />
-          {openModal.state && <ProjectDetails openModal={openModal} setOpenModal={setOpenModal} />}
-        </Body>
+        </div>
       </ThemeProvider>
     </>
   );

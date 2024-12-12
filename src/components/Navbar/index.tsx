@@ -4,18 +4,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
-import styled, { useTheme } from 'styled-components';
-
-const MobileMenuLinks = styled(Link)`
-  color: ${({ theme }) => theme.text_primary};
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s ease-in-out;
-  &:hover {
-    color: ${({ theme }) => theme.primary};
-  }
-`;
 
 const NavBar = () => {
   function topFunction() {
@@ -29,7 +17,6 @@ const NavBar = () => {
   }
 
   const [open, setOpen] = useState<boolean>(false);
-  const theme = useTheme();
   return (
     <div className='bg-card-light h-20 flex justify-center items-center text-base sticky top-0 z-10 transition-all'>
       <div className='flex justify-between h-16 z-1 w-full max-w-[1200px]'>
@@ -70,44 +57,44 @@ const NavBar = () => {
         </div>
       </div>
       <div data-open={open} className='flex flex-col justify-center gap-4 absolute top-20 right-0 w-full pt-[42px] px-10 pb-6 bg-[rgba(25,25,36,0.9)] transition-all data-[open=false]:translate-x-0 rounded-b-2xl shadow-2xl data-[open=true]:opacity-100 data-[open=false]:opacity-0 data-[open=true]:z-1 data-[open=false]:-z-1 data-[open=false]:hidden'>
-        <MobileMenuLinks href="#about" onClick={mobileMenu}>
+        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary' href="#about" onClick={mobileMenu}>
           About
-        </MobileMenuLinks>
-        <MobileMenuLinks
+        </Link>
+        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
           href="#skills"
           onClick={() => {
             setOpen(prev => !prev);
           }}>
           Skills
-        </MobileMenuLinks>
-        <MobileMenuLinks
+        </Link>
+        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
           href="#experience"
           onClick={() => {
             setOpen(prev => !prev);
           }}>
           Experience
-        </MobileMenuLinks>
-        <MobileMenuLinks
+        </Link>
+        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
           href="#projects"
           onClick={() => {
             setOpen(prev => !prev);
           }}>
           Projects
-        </MobileMenuLinks>
-        <MobileMenuLinks
+        </Link>
+        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
           href="#education"
           onClick={() => {
             setOpen(prev => !prev);
           }}>
           Education
-        </MobileMenuLinks>
-        <MobileMenuLinks
+        </Link>
+        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
           href="#contact"
           onClick={() => {
             setOpen(prev => !prev);
           }}>
           Contact
-        </MobileMenuLinks>
+        </Link>
         <Link className='bg-primary w-full text-white border-[1.8px] border-primary rounded-2xl flex no-underline justify-center items-center py-2.5 px-4 h-[70%] text-xs md:text-base font-medium transition-all cursor-pointer hover:bg-transparent hover:text-primary'
           href={Bio.github}
           target="display">

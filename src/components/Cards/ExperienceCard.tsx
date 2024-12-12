@@ -1,163 +1,34 @@
 import React from 'react';
-import styled from 'styled-components';
-
-const Document = styled.img`
-  display: none;
-  height: 70px;
-  width: fit-content;
-  background-color: #000;
-  border-radius: 10px;
-  &:hover {
-    cursor: pointer;
-    opacity: 0.8;
-  }
-`;
-
-const Card = styled.div`
-  width: 650px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  padding: 12px 16px;
-  justify-content: space-between;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: all 0.3s ease-in-out;
-  border: 2px solid ${({ theme }) => theme.primary};
-  box-shadow: rgba(23, 92, 230, 0.15) 0px 4px 24px;
-  &:hover {
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-    transform: translateY(-5px);
-  }
-  @media only screen and (max-width: 768px) {
-    padding: 10px;
-    gap: 8px;
-    width: 300px;
-  }
-
-  &:hover ${Document} {
-    display: flex;
-  }
-`;
-const Top = styled.div`
-  display: flex;
-  gap: 12px;
-  width: 100%;
-`;
-const Logo = styled.img`
-  height: 50px;
-  width: 50px;
-  background-color: #fff;
-  border-radius: 10px;
-  margin-top: 5px;
-  padding: 1.5px;
-
-  @media only screen and (max-width: 768px) {
-    height: 40px;
-  }
-`;
-const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
-const Role = styled.div`
-  font-size: 18px;
-  font-weight: 600;
-  color: ${({ theme }) => theme.text_primary + 99};
-
-  @media only screen and (max-width: 768px) {
-    font-size: 14px;
-  }
-`;
-const Company = styled.div`
-  font-size: 14px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.text_primary + 99};
-
-  @media only screen and (max-width: 768px) {
-    font-size: 12px;
-  }
-`;
-const Duration = styled.div`
-  font-size: 12px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.text_primary + 80};
-  @media only screen and (max-width: 768px) {
-    font-size: 10px;
-  }
-`;
-
-const Desc = styled.div`
-  width: 100%;
-  font-size: 15px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.text_primary + 99};
-  margin-bottom: 10px;
-  @media only screen and (max-width: 768px) {
-    font-size: 12px;
-  }
-`;
-
-const Skills = styled.div`
-  width: 100%;
-  display: flex;
-  gap: 12px;
-  margin-top: 10px;
-`;
-const ItemWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-`;
-const Skill = styled.div`
-  font-size: 15px;
-  font-weight: 400;
-  color: ${({ theme }) => theme.text_primary + 99};
-
-  @media only screen and (max-width: 768px) {
-    font-size: 12px;
-  }
-`;
-
-const Span = styled.span``;
 
 const ExperienceCard: React.FC<{ experience: any }> = ({ experience }) => {
   return (
-    <Card>
-      <Top>
-        <Logo src={experience.img} alt={experience.role} />
-        <Body>
-          <Role>{experience.role}</Role>
-          <Company>{experience.company}</Company>
-          <Duration>{experience.date}</Duration>
-        </Body>
-      </Top>
-      <Desc>
-        {experience?.desc && <Span>{experience.desc}</Span>}
+    <div className='w-[320px] md:w-[650px] border-2 border-primary rounded-xl p-2.5 md:py-3 md:px-4 justify-between relative overflow-hidden flex flex-col gap-2 md:gap-3 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2'>
+      <div className='w-full flex gap-3'>
+        <img className='size-10 md:size-12 bg-white rounded-xl mt-1 p-0.5' src={experience.img} alt={experience.role} />
+        <div className='w-full flex flex-col'>
+          <div className='text-sm md:text-lg font-semibold text-neutral-200'>{experience.role}</div>
+          <div className='text-xs md:text-sm font-medium text-neutral-300'>{experience.company}</div>
+          <div className='text-[10px] md:text-xs text-neutral-400'>{experience.date}</div>
+        </div>
+      </div>
+      <div className='w-full text-xs md:text-base text-neutral-300 mb-2.5'>
+        {experience?.desc && <span>{experience.desc}</span>}
 
         {experience?.skills && (
           <>
             <br />
-            <Skills>
+            <div className='w-full flex gap-3 mt-2.5'>
               <b>Skills:</b>
-              <ItemWrapper>
+              <div className='flex flex-wrap gap-2'>
                 {experience.skills.map((skill: string) => (
-                  <Skill key={skill}>• {skill}</Skill>
+                  <div className='text-xs md:text-base text-neutral-300' key={skill}>• {skill}</div>
                 ))}
-              </ItemWrapper>
-            </Skills>
+              </div>
+            </div>
           </>
         )}
-      </Desc>
-      {experience.doc && (
-        <a href={experience.doc} target="new">
-          <Document src={experience.doc} />
-        </a>
-      )}
-    </Card>
+      </div>
+    </div>
   );
 };
 
