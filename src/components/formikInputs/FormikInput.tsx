@@ -21,13 +21,13 @@ interface IFormikInput {
   max?: number;
   step?: number;
   endAdornment?: any;
-  tooltip?: string | null;
+  tooltip?: string[];
   placeholder?: string;
   doubleDigit?: boolean;
 }
 
 const FormikInput:React.FC<IFormikInput> = ({ id, formik, label, rows, multiline, disabled = false, xs = 0, type = 'text', min = null, max = null, step = 0.01,
-  endAdornment = undefined, tooltip = null, placeholder = '', doubleDigit = false, ...otherProps }) => {
+  endAdornment = undefined, tooltip = undefined, placeholder = '', doubleDigit = false, ...otherProps }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   return (
     <Stack className="default-stack-style h-max">
@@ -35,20 +35,20 @@ const FormikInput:React.FC<IFormikInput> = ({ id, formik, label, rows, multiline
       <TextField
         id={id}
         value={Object.GetNestedValue(formik.values, id) ?? ''}
-        onWheel={event => event.target.blur()}
+        onWheel={event => (event.target as HTMLInputElement).blur()}
         sx={{ paddingTop: '.5rem', '& fieldset': { borderColor: 'var(--text-secondary) !important', borderRadius: '12px' } }}
         onChange={e => {
           if (e.target.type === 'number') {
             const isValidNumberInput = (!!e.target.value && e.target.value !== '');
-            const isMinValid = min !== null && isValidNumberInput ? min <= e.target.value : true;
-            const isMaxValid = max !== null && isValidNumberInput ? max >= e.target.value : true;
-            const deciamlPlaces = MethodHelper.getDecimalPlaces(Number(e.target.value));
+            const isMinValid = min !== null && isValidNumberInput ? min <= Number(e.target.value) : true;
+            const isMaxValid = max !== null && isValidNumberInput ? max >= Number(e.target.value) : true;
+            // const deciamlPlaces = MethodHelper.getDecimalPlaces(Number(e.target.value));
 
-            if (isMinValid && isMaxValid) {
-              formik.setFieldValue(id, isValidNumberInput && deciamlPlaces !== 0 ? Number(e.target.value).toFixed(deciamlPlaces) : e.target.value);
-            } else if (e.target.value) {
-              formik.setFieldValue(id, min);
-            }
+            // if (isMinValid && isMaxValid) {
+            //   formik.setFieldValue(id, isValidNumberInput && deciamlPlaces !== 0 ? Number(e.target.value).toFixed(deciamlPlaces) : e.target.value);
+            // } else if (e.target.value) {
+            //   formik.setFieldValue(id, min);
+            // }
           } else {
             formik.setFieldValue(id, e.target.value);
           }
@@ -57,7 +57,13 @@ const FormikInput:React.FC<IFormikInput> = ({ id, formik, label, rows, multiline
         rows={rows}
         InputProps={{
           // eslint-disable-next-line no-nested-ternary
-          inputProps: { min, max, step: doubleDigit ? (String((+Object.GetNestedValue(formik.values, id)).toFixed(2)).split('').pop() % 2 === 0 ? 0.02 : 0.01) : step },
+          inputProps: { min, max, step: doubleDigit ? (() => {
+            const value = +Object.GetNestedValue(formik.values, id);
+            if (isNaN(value)) return step;
+            const decimalValue = value.toFixed(2);
+            const lastDigit = decimalValue.charAt(decimalValue.length - 1);
+            return parseInt(lastDigit, 10) % 2 === 0 ? 0.02 : 0.01;
+          })() : step },
           className: 'dark:text-text-secondary',
           // eslint-disable-next-line no-nested-ternary
           endAdornment: type === 'password'

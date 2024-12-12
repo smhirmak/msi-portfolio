@@ -57,7 +57,6 @@ const Contact = () => {
           <FormikInput id='message' rows={4} multiline formik={formik} label='Message'  />
           <input className='w-full no-underline text-center py-3 px-4 mt-0.5 rounded-xl border-none text-text-primary text-lg font-semibold cursor-pointer hover:opacity-80 transition-all'
           style={{
-            background: 'hsla(220, 100%, 50%, 1)',
             background: 'linear-gradient(280deg, hsla(0, 100%, 50%, 1) 0%, hsla(220, 100%, 50%, 1) 100%)'
           }} type="submit" value="Send" />
         </Form>
