@@ -11,7 +11,7 @@ https://semihirmak.com/
 
 ## Tech Stack
 
-**Frontend:** React, TypeScript, Next.js, Emailjs, GSAP
+**Frontend:** React, TypeScript, Tailwind, Next.js, Emailjs, GSAP
 
 
 
