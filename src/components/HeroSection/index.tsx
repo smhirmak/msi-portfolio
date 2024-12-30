@@ -63,7 +63,7 @@ const Hero = () => {
               Check Resume
             </Link>
           </div>
-          <div className='order-1 mb-8 md:order-1 md:justify-center md:items-center md:mb-20 flex-1 w-full lg:order-2 flex justify-end gap-3'>
+          <div className='order-1 mb-8 md:order-1 justify-center md:items-center md:mb-20 flex-1 w-full lg:order-2 flex justify-end gap-3'>
             <Image className='w-full h-full absolute rounded-full md:max-h-[450px] md:max-w-[450px] object-cover object-center border-2 border-primary sm:max-w-[350px] sm:max-h-[350px] max-h-[280px] max-w-[280px]' priority={true} src={HeroImg} alt="Hero" />
             <div className='overflow-hidden flex '>
               <HeroBgAnimation />
