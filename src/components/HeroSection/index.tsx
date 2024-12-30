@@ -10,7 +10,7 @@ import Typewriter from 'typewriter-effect';
 const Hero = () => {
   return (
     <div>
-      <div className='bg-card-light flex justify-center relative py-8 px-4 md:py-14 md:px4 lg:py-14 lg:px-7 z-1' style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 70% 95%, 0 100%)' }}>
+      <div className='bg-card-light flex justify-center relative pt-8 pb-20 px-4 md:py-14 md:px4 lg:py-14 lg:px-7 z-1' style={{ clipPath: 'polygon(0 0, 100% 0, 100% 100%, 70% 95%, 0 100%)' }}>
         <div className='flex justify-between items-center w-full max-w-[1100px] flex-col lg:flex-row'>
           <div className='flex-1 w-full cursor-default lg:order-1 order-2 flex items-center flex-col md:order-2 md:mb-8 md:flex md:items-center md:flex-col'>
             <div className='md:text-5xl text-4xl font-bold text-text-primary leading-[48px] mb-2 md:leading-[68px] text-center md:text-start'>
