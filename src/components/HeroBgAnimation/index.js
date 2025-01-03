@@ -1,6 +1,6 @@
 
 const HeroBgAnimation = () => (
-  <div className='w-[500px] h-[500px]'>
+  <div className='w-[500px] md:h-[500px]'>
     <svg
       className="BgAnimation__svg"
       viewBox="0 0 602 602"

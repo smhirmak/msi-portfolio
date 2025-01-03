@@ -28,16 +28,18 @@ export default function Home() {
         <NavBar />
         <div className='bg-bg w-full h-full overflow-hidden'>
           <Hero />
-          <div className='w-full' style={{ 
+          <div className='w-full' style={{
             background: 'linear-gradient(38.73deg, rgba(204, 0, 0, 0.15) 0%, rgba(194, 24, 24, 0) 50%), linear-gradient(141.27deg, rgba(0, 70, 209, 0) 50%, rgba(0, 70, 209, 0.15) 100%)',
-           clipPath: 'polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%)'}}>
-            <Skills />
+            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%)'
+          }}>
             <Experince />
+            <Projects />
           </div>
-          <Projects />
-          <div className='w-full' style={{ 
+          <Skills />
+          <div className='w-full' style={{
             background: 'linear-gradient(38.73deg, rgba(204, 0, 0, 0.15) 0%, rgba(194, 24, 24, 0) 50%), linear-gradient(141.27deg, rgba(0, 70, 209, 0) 50%, rgba(0, 70, 209, 0.15) 100%)',
-           clipPath: 'polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%)'}}>
+            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%)'
+          }}>
             <Education />
             <Contact />
           </div>

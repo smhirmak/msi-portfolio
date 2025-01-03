@@ -2,7 +2,7 @@ export const Bio = {
   name: 'Muhammed Semih',
   roles: ['Frontend Developer', 'Web Developer', 'Programmer', 'Engineer'],
   github: 'https://github.com/smhirmak',
-  resume: 'https://drive.google.com/file/d/10Z0iCsumQlQxjLck1wEGkwyCWAgv_pK8/view?usp=drive_link',
+  resume: 'https://drive.google.com/file/d/1jbJrGWbs3kXcy1fkGMLOUs31eNRH-Bo8/view?usp=drive_link',
   linkedin: 'https://www.linkedin.com/in/muhammed-semih-irmak-307890152/'
 };
 
@@ -175,6 +175,20 @@ export const projects = [
     tags: ['React Js', 'TypeScript', 'Tailwind', 'HTML', 'CSS'],
     category: 'ui kit',
     github: 'https://github.com/smhirmak/msi-ui-kit',
+    webapp: 'https://msi-ui-kit.vercel.app/'
+  },
+  {
+    id: 0,
+    title: 'Linatek Elektronik Raylı Sistemler',
+    description:
+      'This corporate website, developed using React, Next.js, shadcn/ui, TypeScript, and Tailwind, boasts excellent SEO performance.',
+    image:
+      '/logos/projects/linatek-with-text.svg',
+    imageClassName: '!object-contain',
+    tags: ['React', 'Next.js', 'shadcn/ui', 'TypeScript', 'Tailwind'],
+    category: 'corporate website',
+    github: 'https://github.com/smhirmak/linatek-website',
+    webapp: 'https://linatek.com.tr'
   },
   {
     id: 1,

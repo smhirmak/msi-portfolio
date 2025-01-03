@@ -12,13 +12,13 @@ const ProjectCard: React.FC<{ project: any }> = ({ project }) => {
       <div className='w-full flex flex-col px-0.5'>
         <div className='text-xl font-semibold text-text-secondary overflow-hidden text-ellipsis text-nowrap max-w-full'>{project.title}</div>
         <div className='text-xs ml-0.5 text-text-secondary'>{project.date}</div>
-        <div className='text-text-secondary overflow-hidden text-ellipsis mt-2 max-w-full line-clamp-3' title={project.description}>{project.description}</div>
+        <div className='text-text-secondary overflow-hidden text-ellipsis mt-2 max-w-full line-clamp-4' title={project.description}>{project.description}</div>
       </div>
       <div className='flex justify-end my-3 gap-3'>
         <a className='w-full text-center no-underline text-xs md:text-sm font-semibold text-text-primary py-3 px-4 rounded-md bg-red-800 hover:bg-red-700 cursor-pointer transition-all' href={project?.github} target="new">
           View Code
         </a>
-       {project?.webapp && <a className='w-full text-center no-underline text-xs md:text-sm font-semibold text-text-primary py-3 px-4 rounded-md bg-red-800 hover:bg-red-700 cursor-pointer transition-all' href={project?.webapp} target="new">
+        {project?.webapp && <a className='w-full text-center no-underline text-xs md:text-sm font-semibold text-text-primary py-3 px-4 rounded-md bg-red-800 hover:bg-red-700 cursor-pointer transition-all' href={project?.webapp} target="new">
           View Live App
         </a>}
       </div>

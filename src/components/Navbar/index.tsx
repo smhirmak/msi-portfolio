@@ -44,9 +44,9 @@ const NavBar = () => {
           <a href="#about" className='hover:text-primary' onClick={topFunction}>
             About
           </a>
-          <a className='hover:text-primary' href="#skills">Skills</a>
           <a className='hover:text-primary' href="#experience">Experience</a>
           <a className='hover:text-primary' href="#projects">Projects</a>
+          <a className='hover:text-primary' href="#skills">Skills</a>
           <a className='hover:text-primary' href="#education">Education</a>
           <a className='hover:text-primary' href="#contact">Contact</a>
         </ul>
@@ -61,13 +61,6 @@ const NavBar = () => {
           About
         </Link>
         <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
-          href="#skills"
-          onClick={() => {
-            setOpen(prev => !prev);
-          }}>
-          Skills
-        </Link>
-        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
           href="#experience"
           onClick={() => {
             setOpen(prev => !prev);
@@ -80,6 +73,13 @@ const NavBar = () => {
             setOpen(prev => !prev);
           }}>
           Projects
+        </Link>
+        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
+          href="#skills"
+          onClick={() => {
+            setOpen(prev => !prev);
+          }}>
+          Skills
         </Link>
         <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
           href="#education"
