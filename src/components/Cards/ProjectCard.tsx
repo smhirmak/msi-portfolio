@@ -10,7 +10,7 @@ const ProjectCard: React.FC<{ project: any }> = ({ project }) => {
         ))}
       </div>
       <div className='w-full flex flex-col px-0.5'>
-        <div className='text-xl font-semibold text-text-secondary overflow-hidden text-ellipsis text-nowrap max-w-full'>{project.title}</div>
+        <div className='text-xl font-semibold text-text-secondary overflow-hidden text-ellipsis text-nowrap max-w-full' title={project.title}>{project.title}</div>
         <div className='text-xs ml-0.5 text-text-secondary'>{project.date}</div>
         <div className='text-text-secondary overflow-hidden text-ellipsis mt-2 max-w-full line-clamp-4' title={project.description}>{project.description}</div>
       </div>
