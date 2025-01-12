@@ -18,11 +18,19 @@ export const Timeline = ({ data, title, desc, className }: { data: TimelineEntry
     const containerRef = useRef<HTMLDivElement>(null);
     const [height, setHeight] = useState(0);
 
-    useEffect(() => {
+    const updateHeight = () => {
         if (ref.current) {
             const rect = ref.current.getBoundingClientRect();
             setHeight(rect.height);
         }
+    };
+
+    useEffect(() => {
+        updateHeight();
+        window.addEventListener('resize', updateHeight);
+        return () => {
+            window.removeEventListener('resize', updateHeight);
+        };
     }, [ref]);
 
     const { scrollYProgress } = useScroll({
