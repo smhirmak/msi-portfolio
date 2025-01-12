@@ -1,6 +1,5 @@
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { Bio } from '@/data/constants';
+import { IconBrandGithub, IconBrandLinkedin } from '@tabler/icons-react';
 
 function Footer() {
   function topFunction() {
@@ -23,29 +22,15 @@ function Footer() {
         </nav>
         <div className='flex text-2xl md:text-base'>
           <a className='inline-block mx-3 text-xl text-text-primary transition-colors' href={Bio.linkedin} target="display">
-            <LinkedInIcon
-              fontSize="large"
-              sx={{
-                transition: 'all 0.3s ease-in-out',
-                '&:hover': {
-                  color: 'rgb(10,102,194)',
-                  transition: 'all 0.3s ease-in-out',
-                  transform: 'scale(1.2)'
-                }
-              }}
+            <IconBrandLinkedin
+              size={35}
+              className='hover:text-icons-hover transition-all duration-300 hover:scale-125'
             />
           </a>
           <a className='inline-block mx-3 text-xl text-text-primary transition-colors' href={Bio.github} target="display">
-            <GitHubIcon
-              fontSize="large"
-              sx={{
-                transition: 'all 0.3s ease-in-out',
-                '&:hover': {
-                  color: 'rgb(10,102,194)',
-                  transition: 'all 0.3s ease-in-out',
-                  transform: 'scale(1.2)'
-                }
-              }}
+            <IconBrandGithub
+              size={35}
+              className='hover:text-icons-hover transition-all duration-300 hover:scale-125'
             />
           </a>
         </div>

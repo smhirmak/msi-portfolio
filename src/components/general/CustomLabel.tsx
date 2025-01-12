@@ -1,4 +1,3 @@
-import InfoIcon from '@mui/icons-material/Info';
 import { InputLabel, Typography } from '@mui/material';
 import Tooltip from '@mui/material/Tooltip';
 
@@ -16,7 +15,7 @@ const CustomLabel: React.FC<CustomLabelProps> = ({ id, label, tooltip, disabled 
       <Typography fontSize={{ xs: '.8rem', md: '1rem' }} className={`${disabled ? 'text-gray-500' : 'text-text-secondary'} dark:text-darkenWhite`}>
         {label}
       </Typography>
-      {(tooltip && tooltip.length > 0) && (
+      {/* {(tooltip && tooltip.length > 0) && (
         <Tooltip
           sx={{ height: '1.4rem' }}
           title={<div dangerouslySetInnerHTML={{ __html: formatInfoForTooltip(tooltip) }} />}
@@ -24,7 +23,7 @@ const CustomLabel: React.FC<CustomLabelProps> = ({ id, label, tooltip, disabled 
         >
           <InfoIcon fontSize="small" sx={{ color: 'var(--input-dark-border-color)' }} />
         </Tooltip>
-      )}
+      )} */}
     </InputLabel>
   );
 };

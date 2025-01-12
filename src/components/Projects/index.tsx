@@ -1,22 +1,28 @@
 import { projects } from '@/data/constants';
-import ProjectCard from '../Cards/ProjectCard';
+import { motion } from "framer-motion";
+import { LampContainer } from '../ui/lamp';
+import { HoverEffect } from '../ui/card-hover-effect';
 
 const Projects = () => {
   return (
-    <div className='flex flex-col justify-center relative z-1 items-center pt-14 '
-      style={{
-        background: 'linear-gradient(340deg, rgba(216, 38, 38, 0.06) 20%, rgba(216, 38, 38, 0) 75%)',
-        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 100% 98%, 0 100%)'
-      }} id="projects">
-      <div className='max-w-[1350px] relative flex flex-col justify-between w-full gap-3 items-center pt-2.5 pb-[100px]'>
-        <div className='text-4xl md:text-5xl font-semibold text-center mt-3 md:mt-6 text-text-primary'>Projects</div>
-        <div className='text-base md:text-lg max-w-[600px] text-center text-text-secondary'>Projects of my own that I`m working on.</div>
-        <div className='flex justify-center items-center flex-wrap gap-9 pt-10'>
-          {projects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
-          ))}
-        </div>
-      </div>
+    <div className='bg-slate-950 mb-20' id='projects'>
+      <LampContainer>
+        <motion.h1
+          initial={{ opacity: 0.5, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.8,
+            ease: "easeInOut",
+          }}
+          className="bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
+        >
+          <div>
+            <span className='text-4xl md:text-6xl font-bold'>Projects</span> <br /> <span className='text-2xl md:text-4xl'>Projects of my own that I`m working on.</span>
+          </div>
+        </motion.h1>
+      </LampContainer>
+      <HoverEffect items={projects} />
     </div>
   );
 };

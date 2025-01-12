@@ -1,8 +1,6 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { IconButton, InputAdornment, Stack, TextField } from '@mui/material';
 import { useState } from 'react';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import Object from '@/utils/Object';
 import CustomLabel from '../general/CustomLabel';
 import FormikErrorText from './FormikErrorText';
@@ -26,7 +24,7 @@ interface IFormikInput {
   doubleDigit?: boolean;
 }
 
-const FormikInput:React.FC<IFormikInput> = ({ id, formik, label, rows, multiline, disabled = false, xs = 0, type = 'text', min = null, max = null, step = 0.01,
+const FormikInput: React.FC<IFormikInput> = ({ id, formik, label, rows, multiline, disabled = false, xs = 0, type = 'text', min = null, max = null, step = 0.01,
   endAdornment = undefined, tooltip = undefined, placeholder = '', doubleDigit = false, ...otherProps }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   return (
@@ -57,23 +55,18 @@ const FormikInput:React.FC<IFormikInput> = ({ id, formik, label, rows, multiline
         rows={rows}
         InputProps={{
           // eslint-disable-next-line no-nested-ternary
-          inputProps: { min, max, step: doubleDigit ? (() => {
-            const value = +Object.GetNestedValue(formik.values, id);
-            if (isNaN(value)) return step;
-            const decimalValue = value.toFixed(2);
-            const lastDigit = decimalValue.charAt(decimalValue.length - 1);
-            return parseInt(lastDigit, 10) % 2 === 0 ? 0.02 : 0.01;
-          })() : step },
+          inputProps: {
+            min, max, step: doubleDigit ? (() => {
+              const value = +Object.GetNestedValue(formik.values, id);
+              if (isNaN(value)) return step;
+              const decimalValue = value.toFixed(2);
+              const lastDigit = decimalValue.charAt(decimalValue.length - 1);
+              return parseInt(lastDigit, 10) % 2 === 0 ? 0.02 : 0.01;
+            })() : step
+          },
           className: 'dark:text-text-secondary',
           // eslint-disable-next-line no-nested-ternary
-          endAdornment: type === 'password'
-            ? (
-              <IconButton onClick={() => setPasswordVisible(prev => !prev)}>
-                {passwordVisible
-                  ? <VisibilityOffIcon className="dark:text-darkenWhite" />
-                  : <VisibilityIcon className="dark:text-darkenWhite" />}
-              </IconButton>
-            ) : endAdornment ? <InputAdornment position="end">{endAdornment}</InputAdornment> : undefined,
+          endAdornment: endAdornment ? <InputAdornment position="end">{endAdornment}</InputAdornment> : undefined,
         }}
         disabled={disabled}
         type={passwordVisible ? 'text' : type}

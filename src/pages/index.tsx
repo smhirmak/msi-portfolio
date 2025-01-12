@@ -1,19 +1,22 @@
 import Contact from '@/components/Contact';
+import Projects from '@/components/Projects';
 import Education from '@/components/Education';
 import Experince from '@/components/Experince';
 import Footer from '@/components/Footer';
 import Hero from '@/components/HeroSection';
 import NavBar from '@/components/Navbar';
 import PreLoader from '@/components/PreLoader/PreLoader';
-import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import { darkTheme } from '@/utils/Themes';
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components';
+import SmoothScrolling from '@/components/SmoothScroll';
 
 
 export default function Home() {
+
+
   return (
     <>
       <Head>
@@ -25,23 +28,19 @@ export default function Home() {
       </Head>
       <ThemeProvider theme={darkTheme}>
         <PreLoader />
-        <NavBar />
-        <div className='bg-bg w-full h-full overflow-hidden'>
-          <Hero />
-          <div className='w-full' style={{
-            background: 'linear-gradient(38.73deg, rgba(204, 0, 0, 0.15) 0%, rgba(194, 24, 24, 0) 50%), linear-gradient(141.27deg, rgba(0, 70, 209, 0) 50%, rgba(0, 70, 209, 0.15) 100%)',
-            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%)'
-          }}>
-            <Experince />
-            <Projects />
-          </div>
-          <Skills />
-          <div className='w-full' style={{
-            background: 'linear-gradient(38.73deg, rgba(204, 0, 0, 0.15) 0%, rgba(194, 24, 24, 0) 50%), linear-gradient(141.27deg, rgba(0, 70, 209, 0) 50%, rgba(0, 70, 209, 0.15) 100%)',
-            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%)'
-          }}>
-            <Education />
-            <Contact />
+        <div className='bg-bg'>
+          <NavBar />
+          <div className='container mx-auto max-w-screen-xl '>
+            <SmoothScrolling>
+              <div className='w-full h-full'>
+                <Hero />
+                <Projects />
+                <Experince />
+                <Skills />
+                <Education />
+                <Contact />
+              </div>
+            </SmoothScrolling>
           </div>
           <Footer />
         </div>
