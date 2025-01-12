@@ -9,6 +9,10 @@ const nextConfig = {
   },
   compiler: {
     styledComponents: true
-  }
+  },
+  images: {
+    domains: ['upload.wikimedia.org', 'user-images.githubusercontent.com'],
+  },
 };
+
 module.exports = nextConfig;

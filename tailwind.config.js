@@ -22,9 +22,11 @@ module.exports = {
         button: 'var(--button)',
         white: 'var(--white)',
         black: 'var(--black)',
+        'icons-hover': 'var(--icons-hover)',
       },
       zIndex: {
         1: '1',
+        999: '999',
       },
       clipPath: {
         'polygon-[0_0,100%_0,100%_100%,30%_98%,0_100%]': 'polygon(0 0, 100% 0, 100% 100%, 30% 98%, 0 100%)',

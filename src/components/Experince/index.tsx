@@ -1,34 +1,113 @@
-import { experiences } from '@/data/constants';
-import Timeline from '@mui/lab/Timeline';
-import TimelineConnector from '@mui/lab/TimelineConnector';
-import TimelineContent from '@mui/lab/TimelineContent';
-import TimelineDot from '@mui/lab/TimelineDot';
-import TimelineItem from '@mui/lab/TimelineItem';
-import TimelineSeparator from '@mui/lab/TimelineSeparator';
-import ExperienceCard from '../Cards/ExperienceCard';
+import Image from 'next/image';
+import { Timeline } from '../ui/timeline';
+
+const data = [
+  {
+    title: "Nov 2023 - Present",
+    content: (
+      <div>
+        <p className="text-neutral-800 dark:text-neutral-200 text-xl md:text-3xl font-bold mb-2">
+          Junior Frontend Developer
+        </p>
+        <div className="flex w-fit gap-4 items-center mb-8">
+          <Image
+            src="/logos/experiences/tra-bilisim.svg"
+            alt="Tra Bilisim"
+            width={300}
+            height={300}
+            className="rounded-lg object-fill max-w-14 max-h-1max-w-14 md:max-h-24 md:max-w-24 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+          />
+          <p className="text-neutral-800 dark:text-neutral-200 text-xl md:text-2xl md:whitespace-nowrap font-bold ">
+            Tra Bilişim
+          </p>
+        </div>
+        <p className="text-neutral-800 dark:text-neutral-200 text-sm md:text-base font-normal mb-8">
+          I am working as a Junior Frontend Developer at Tra Bilisim. I am responsible for developing and maintaining the frontend of the projects. I am using React, Typescript, Tailwind, and Material UI in the projects.
+        </p>
+      </div>
+    ),
+  },
+  {
+    title: "Jan 2022 - July 2023",
+    content: (
+      <div>
+        <p className="text-neutral-800 dark:text-neutral-200 text-xl md:text-3xl font-bold mb-2">
+          R&D / Hardware Design Engineer
+        </p>
+        <div className="flex w-fit gap-4 items-center mb-8">
+          <Image
+            src="/logos/experiences/linatek.png"
+            alt="Tra Bilisim"
+            width={300}
+            height={300}
+            className="rounded-lg object-fill max-w-14 max-h-1max-w-14 md:max-h-24 md:max-w-24 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+          />
+          <p className="text-neutral-800 dark:text-neutral-200 text-xl md:text-2xl md:whitespace-nowrap font-bold ">
+            Linatek Elektronik Raylı Sistemler
+          </p>
+        </div>
+        <p className="text-neutral-800 dark:text-neutral-200 text-sm md:text-base font-normal mb-8">
+          Electric electronic cards and units of locomotives production and repair. These cards and Electronic card design, drawing in the production of units, I am involved in repair and software areas.
+        </p>
+      </div>
+    ),
+  },
+  {
+    title: "July 2021 - Jan 2022",
+    content: (
+      <div>
+        <p className="text-neutral-800 dark:text-neutral-200 text-xl md:text-3xl font-bold mb-2">
+          Electric Electronics Engineer Intern
+        </p>
+        <div className="flex w-fit gap-4 items-center mb-8">
+          <Image
+            src="/logos/experiences/linatek.png"
+            alt="Tra Bilisim"
+            width={300}
+            height={300}
+            className="rounded-lg object-fill max-w-14 max-h-1max-w-14 md:max-h-24 md:max-w-24 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+          />
+          <p className="text-neutral-800 dark:text-neutral-200 text-xl md:text-2xl md:whitespace-nowrap font-bold ">
+            Linatek Elektronik Raylı Sistemler
+          </p>
+        </div>
+        <p className="text-neutral-800 dark:text-neutral-200 text-sm md:text-base font-normal mb-8">
+          I developed projects in the field of Embedded Systems. I soldered SMD and DIP materials on PCB boards. I made schematic drawings with Reverse Engineering methods.
+        </p>
+      </div>
+    ),
+  },
+  {
+    title: "Jan 2020 - Feb 2020",
+    content: (
+      <div>
+        <p className="text-neutral-800 dark:text-neutral-200 text-xl md:text-3xl font-bold mb-2">
+          Electric Electronics Engineer Intern
+        </p>
+        <div className="flex w-fit gap-4 items-center mb-8">
+          <Image
+            src="/logos/experiences/genpark.png"
+            alt="Tra Bilisim"
+            width={300}
+            height={300}
+            className="rounded-lg object-fill max-w-14 max-h-1max-w-14 md:max-h-24 md:max-w-24 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
+          />
+          <p className="text-neutral-800 dark:text-neutral-200 text-xl md:text-2xl md:whitespace-nowrap font-bold ">
+            GENPARK Power System
+          </p>
+        </div>
+        <p className="text-neutral-800 dark:text-neutral-200 text-sm md:text-base font-normal mb-8">
+          I worked in electrical panel design and assembly departments.
+        </p>
+      </div>
+    ),
+  },
+];
 
 const Experince = () => {
   return (
-    <div className='flex flex-col justify-center relative z-1 items-center py-16 lg:pt-14 lg:pb-20 px-0' id="experience">
-      <div className='max-w-[1100px] relative flex flex-col justify-between w-full gap-4 items-center'>
-        <div className='text-4xl md:text-5xl font-semibold text-center mt-3 md:mt-5 text-text-primary'>Experience</div>
-        <div className='text-base md:text-lg max-w-[600px] text-center text-text-secondary'>Here are some of my projects</div>
-        <div className='w-full max-w-[1000px] mt-2.5 flex flex-col items-center justify-center gap-3'>
-          <Timeline>
-            {experiences.map((experience, index) => (
-              <TimelineItem key={experience.id}>
-                <TimelineSeparator>
-                  <TimelineDot variant="outlined" color="error" />
-                  {index !== experiences.length - 1 && <TimelineConnector />}
-                </TimelineSeparator>
-                <TimelineContent sx={{ py: '12px', px: 2 }}>
-                  <ExperienceCard experience={experience} />
-                </TimelineContent>
-              </TimelineItem>
-            ))}
-          </Timeline>
-        </div>
-      </div>
+    <div className='pt-24' id='experience'>
+      <Timeline title='Experience' desc='Here are some of my projects' data={data} />
     </div>
   );
 };

@@ -12,10 +12,12 @@
   margin: 0;
   padding: 0;
   font-family: 'Poppins', sans-serif;
+  scroll-behavior: unset;
 }
 
-html {
+body {
   scroll-behavior: smooth;
+  /* overflow: hidden; */
 }
 
 body {
@@ -25,27 +27,29 @@ body {
 }
 
 :root {
-  --bg: #1C1C27;
-  --bg-light: #1C1E27;
-  --primary: #D82626;
-  --secondary: #0045D1;
-  --text-primary: #F2F3F4;
+  --bg: #020617;
+  --bg-light: #1c1e27;
+  --primary: #d82626;
+  --secondary: #0045d1;
+  --text-primary: #f2f3f4;
   --text-secondary: #b1b2b3;
   --card: #171721;
   --card-light: #191924;
-  --button: #D82626;
-  --white: #FFFFFF;
+  --button: #d82626;
+  --white: #ffffff;
   --black: #000000;
+  --icons-hover: #0a66c2;
 }
 
 .dark {
-  --bg: #FFFFFF;
+  --bg: #ffffff;
   --bg-light: #f0f0f0;
   --primary: #be1adb;
   --text-primary: #111111;
   --text-secondary: #48494a;
-  --card: #FFFFFF;
+  --card: #ffffff;
   --button: #5c5b5b;
+  --icons-hover: #0a66c2;
 }
 
 /* width */
