@@ -10,10 +10,6 @@ import { MovingBorder } from '../ui/moving-border';
 import { cn } from '@/lib/utils';
 
 const NavBar = () => {
-  function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }
   function mobileMenu() {
     setOpen(prev => !prev);
     document.body.scrollTop = 0;
