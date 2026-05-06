@@ -12,18 +12,15 @@ export const skills = [
     skills: [
       {
         name: 'React',
-        image:
-          '/logos/skills/react.png'
+        image: '/logos/skills/react.png'
       },
       {
         name: 'Redux',
-        image:
-          '/logos/skills/redux.svg'
+        image: '/logos/skills/redux.svg'
       },
       {
         name: 'Next.js',
-        image:
-          '/logos/skills/nexjs.png'
+        image: '/logos/skills/nexjs.png'
       },
       {
         name: 'HTML',
@@ -31,23 +28,19 @@ export const skills = [
       },
       {
         name: 'CSS',
-        image:
-          '/logos/skills/css.png'
+        image: '/logos/skills/css.png'
       },
       {
         name: 'JavaScript',
-        image:
-          '/logos/skills/js.png'
+        image: '/logos/skills/js.png'
       },
       {
         name: 'TypeScript',
-        image:
-          '/logos/skills/ts.png'
+        image: '/logos/skills/ts.png'
       },
       {
         name: 'Material UI',
-        image:
-          '/logos/skills/mui.svg'
+        image: '/logos/skills/mui.svg'
       },
       {
         name: 'Tailwind',
@@ -59,8 +52,7 @@ export const skills = [
       },
       {
         name: 'GSAP',
-        image:
-          '/logos/skills/gsap.png'
+        image: '/logos/skills/gsap.png'
       }
     ]
   },
@@ -73,13 +65,11 @@ export const skills = [
       },
       {
         name: 'Express.js',
-        image:
-          '/logos/skills/express-js.png'
+        image: '/logos/skills/express-js.png'
       },
       {
         name: 'MongoDB',
-        image:
-          '/logos/skills/mongodb.webp'
+        image: '/logos/skills/mongodb.webp'
       },
       {
         name: 'Firebase',
@@ -92,8 +82,7 @@ export const skills = [
     skills: [
       {
         name: 'Git',
-        image:
-          '/logos/skills/git.png'
+        image: '/logos/skills/git.png'
       },
       {
         name: 'GitHub',
@@ -102,37 +91,43 @@ export const skills = [
 
       {
         name: 'VS Code',
-        image:
-          '/logos/skills/vscode.png'
-      },
+        image: '/logos/skills/vscode.png'
+      }
     ]
   }
 ];
 
 export const projects = [
   {
-    title: 'MSI UI Kit',
-    description:
-      'This project is a UI Kit and developed using React, TypeScript, Tailwind.',
-    image:
-      '/logos/projects/msi-ui-kit-logo-light.png',
+    title: 'TRA UI Kit',
+    description: 'This project is a UI Kit and developed using React, TypeScript, Tailwind.',
+    image: '/logos/projects/tra-ui-kit.png',
     imageClassName: '!object-contain',
     tags: ['React Js', 'TypeScript', 'Tailwind', 'HTML', 'CSS'],
     category: 'ui kit',
-    github: 'https://github.com/smhirmak/msi-ui-kit',
-    webapp: 'https://msi-ui-kit.vercel.app/'
+    github: 'https://github.com/smhirmak/tra-ui-kit',
+    webapp: 'https://ui.trabilisim.tech/'
+  },
+  {
+    title: 'TRA UI Base',
+    description: 'This project is a UI Base and developed using React, Vite, TypeScript, Tailwind.',
+    image: '/logos/projects/tra-ui-base.png',
+    imageClassName: '!object-contain',
+    tags: ['React Js', 'Vite', 'TypeScript', 'Tailwind', 'HTML', 'CSS'],
+    category: 'ui base',
+    github: 'https://github.com/smhirmak/tra-ui-base',
+    webapp: 'https://ui.trabilisim.tech/v1/ui-base'
   },
   {
     title: 'Linatek Elektronik Raylı Sistemler',
     description:
       'This corporate website, developed using React, Next.js, shadcn/ui, TypeScript, and Tailwind, boasts excellent SEO performance.',
-    image:
-      '/logos/projects/linatek-with-text.svg',
+    image: '/logos/projects/linatek-with-text.svg',
     imageClassName: '!object-contain',
     tags: ['React', 'Next.js', 'shadcn/ui', 'TypeScript', 'Tailwind'],
     category: 'corporate website',
     github: 'https://github.com/smhirmak/linatek-website',
-    webapp: 'https://linatek.com.tr'
+    webapp: 'https://demo.linatek.com.tr'
   },
   {
     title: 'Shopping Cart App',

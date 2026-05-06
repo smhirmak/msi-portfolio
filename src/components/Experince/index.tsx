@@ -1,14 +1,14 @@
 import Image from 'next/image';
 import { Timeline } from '../ui/timeline';
+import { formatDistance } from 'date-fns';
 
 const data = [
   {
-    title: "Nov 2023 - Present",
+    title: 'Nov 2023 - Present',
+    totalTime: formatDistance(new Date('2023-11-01').getTime(), new Date().getTime()),
     content: (
       <div>
-        <p className="text-neutral-200 text-xl md:text-3xl font-bold mb-2">
-          Junior Frontend Developer
-        </p>
+        <p className="text-neutral-200 text-xl md:text-3xl font-bold mb-2">Frontend Developer</p>
         <div className="flex w-fit gap-4 items-center mb-8">
           <Image
             src="/logos/experiences/tra-bilisim.svg"
@@ -22,13 +22,16 @@ const data = [
           </p>
         </div>
         <p className="text-neutral-200 text-sm md:text-base font-normal mb-8">
-          I am working as a Junior Frontend Developer at Tra Bilisim. I am responsible for developing and maintaining the frontend of the projects. I am using React, Typescript, Tailwind, and Material UI in the projects.
+          I am working as a Frontend Developer at Tra Bilisim. I am responsible for developing and
+          maintaining the frontend of the projects. I am using React, Typescript, Tailwind, and
+          Material UI in the projects.
         </p>
       </div>
-    ),
+    )
   },
   {
-    title: "Jan 2022 - July 2023",
+    title: 'Jan 2022 - July 2023',
+    totalTime: formatDistance(new Date('2022-01-01').getTime(), new Date('2023-07-01').getTime()),
     content: (
       <div>
         <p className="text-neutral-200 text-xl md:text-3xl font-bold mb-2">
@@ -47,13 +50,16 @@ const data = [
           </p>
         </div>
         <p className="text-neutral-200 text-sm md:text-base font-normal mb-8">
-          Electric electronic cards and units of locomotives production and repair. These cards and Electronic card design, drawing in the production of units, I am involved in repair and software areas.
+          Electric electronic cards and units of locomotives production and repair. These cards and
+          Electronic card design, drawing in the production of units, I am involved in repair and
+          software areas.
         </p>
       </div>
-    ),
+    )
   },
   {
-    title: "July 2021 - Jan 2022",
+    title: 'July 2021 - Jan 2022',
+    totalTime: formatDistance(new Date('2021-07-01').getTime(), new Date('2022-01-01').getTime()),
     content: (
       <div>
         <p className="text-neutral-200 text-xl md:text-3xl font-bold mb-2">
@@ -72,13 +78,15 @@ const data = [
           </p>
         </div>
         <p className="text-neutral-200 text-sm md:text-base font-normal mb-8">
-          I developed projects in the field of Embedded Systems. I soldered SMD and DIP materials on PCB boards. I made schematic drawings with Reverse Engineering methods.
+          I developed projects in the field of Embedded Systems. I soldered SMD and DIP materials on
+          PCB boards. I made schematic drawings with Reverse Engineering methods.
         </p>
       </div>
-    ),
+    )
   },
   {
-    title: "Jan 2020 - Feb 2020",
+    title: 'Jan 2020 - Feb 2020',
+    totalTime: formatDistance(new Date('2020-01-01').getTime(), new Date('2020-02-01').getTime()),
     content: (
       <div>
         <p className="text-neutral-200 text-xl md:text-3xl font-bold mb-2">
@@ -100,14 +108,14 @@ const data = [
           I worked in electrical panel design and assembly departments.
         </p>
       </div>
-    ),
-  },
+    )
+  }
 ];
 
 const Experince = () => {
   return (
-    <div className='pt-24' id='experience'>
-      <Timeline title='Experience' desc='Here are some of my projects' data={data} />
+    <div className="pt-24" id="experience">
+      <Timeline title="Experience" desc="Here are some of my projects" data={data} />
     </div>
   );
 };
