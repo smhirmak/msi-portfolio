@@ -52,7 +52,7 @@ const Hero = () => {
               </a>
             </div>
             <Link
-              className="hover:scale-105 hover:transition-all hover:brightness-110 appearance-[button] no-underline w-[75%] text-center py-3 md:py-4 text-white rounded-xl cursor-pointer z-10 text=lg md:text-xl font-semibold transition-all"
+              className="hover:scale-105 hover:transition-all hover:brightness-110 appearance-[button] no-underline w-[75%] text-center py-3 md:py-4 text-white rounded-xl cursor-pointer z-10 text=lg md:text-xl md:mt-10 font-semibold transition-all"
               style={{
                 background:
                   '-webkit-linear-gradient(280deg,hsla(0, 100%, 50%, 1) 0%,hsla(220, 100%, 41%, 1) 100%)',

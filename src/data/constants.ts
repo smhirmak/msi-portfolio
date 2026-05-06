@@ -2,7 +2,7 @@ export const Bio = {
   name: 'Muhammed Semih',
   roles: ['Frontend Developer', 'Web Developer', 'Programmer', 'Engineer'],
   github: 'https://github.com/smhirmak',
-  resume: 'https://drive.google.com/file/d/1jbJrGWbs3kXcy1fkGMLOUs31eNRH-Bo8/view?usp=drive_link',
+  resume: 'https://drive.google.com/file/d/1U2vyRVHgQm_zlDCnhMtZ6bed9fQAEMDN/view?usp=sharing',
   linkedin: 'https://www.linkedin.com/in/muhammed-semih-irmak-307890152/'
 };
 
