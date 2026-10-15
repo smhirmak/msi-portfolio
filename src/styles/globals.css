@@ -1,169 +1,125 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import 'tailwindcss';
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'Poppins', sans-serif;
-  scroll-behavior: unset;
+@theme inline {
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
 }
 
-body {
-  scroll-behavior: smooth;
-  /* overflow: hidden; */
+@theme {
+  --color-bg: #020617;
+  --color-bg-light: #1c1e27;
+  --color-primary: #f87171;
+  --color-secondary: #60a5fa;
+  --color-text-primary: #f2f3f4;
+  --color-text-secondary: #b1b2b3;
+  --color-card: #171721;
+  --color-card-light: #191924;
+  --color-button: #b91c1c;
+  --color-error: #fca5a5;
+  --color-icons-hover: #60a5fa;
 }
 
-body {
-  margin: 0px !important;
-  padding: 0;
-  font-family: 'Montserrat', sans-serif;
+@layer base {
+  :root {
+    color-scheme: dark;
+    --header-height: 5rem;
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-height) + 1.5rem);
+  }
+  body {
+    @apply bg-bg text-text-primary font-sans antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 4px;
+  }
+  section:focus,
+  main:focus {
+    outline: none;
+  }
+  ::selection {
+    background: var(--color-primary);
+    color: var(--color-bg);
+  }
+  input,
+  textarea,
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
-:root {
-  --bg: #020617;
-  --bg-light: #1c1e27;
-  --primary: #d82626;
-  --secondary: #0045d1;
-  --text-primary: #f2f3f4;
-  --text-secondary: #b1b2b3;
-  --card: #171721;
-  --card-light: #191924;
-  --button: #d82626;
-  --white: #ffffff;
-  --black: #000000;
-  --icons-hover: #0a66c2;
+@utility bg-gradient-conic {
+  background-image: conic-gradient(var(--conic-position), var(--tw-gradient-stops));
 }
 
-.dark {
-  --bg: #ffffff;
-  --bg-light: #f0f0f0;
-  --primary: #be1adb;
-  --text-primary: #111111;
-  --text-secondary: #48494a;
-  --card: #ffffff;
-  --button: #5c5b5b;
-  --icons-hover: #0a66c2;
+@layer components {
+  .button-primary {
+    @apply inline-flex min-h-11 items-center justify-center rounded-xl bg-button px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-red-700 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+  .button-secondary {
+    @apply inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-600 px-5 py-3 text-sm font-semibold text-text-primary transition-colors hover:border-primary hover:bg-card;
+  }
+  .form-input {
+    @apply w-full rounded-xl border border-slate-600 bg-card px-4 py-3 text-base text-text-primary placeholder:text-slate-400 focus:border-secondary focus:outline-2 focus:outline-secondary focus:outline-offset-2 aria-invalid:border-error disabled:opacity-60;
+  }
+  .intro-overlay {
+    animation: intro-exit 0.85s ease-out forwards;
+  }
+  .typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1em;
+    margin-left: 3px;
+    vertical-align: -0.1em;
+    background: currentColor;
+    animation: cursor-blink 1s step-end infinite;
+  }
 }
 
-/* width */
+@keyframes cursor-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes intro-exit {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 80px;
+  width: 8px;
 }
-
-/* Track */
 ::-webkit-scrollbar-track {
-  background: #222a35;
+  background: var(--color-bg);
 }
-
-/* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #575c66;
+  background: #64748b;
   border-radius: 6px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #626970;
-}
-
-#notfound {
-  position: relative;
-  height: 100vh;
-  background: #030005;
-}
-
-#notfound .notfound {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.notfound {
-  max-width: 767px;
-  width: 100%;
-  line-height: 1.4;
-  text-align: center;
-}
-
-.notfound .notfound-404 {
-  position: relative;
-  height: 180px;
-  margin-bottom: 20px;
-  z-index: -1;
-}
-
-.notfound .notfound-404 h1 {
-  font-family: 'Montserrat', sans-serif;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  font-size: 224px;
-  font-weight: 900;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-left: -12px;
-  color: #030005;
-  text-transform: uppercase;
-  text-shadow: -1px -1px 0px #0045d1, 1px 1px 0px #d82626;
-  letter-spacing: -20px;
-}
-
-.notfound .notfound-404 h2 {
-  font-family: 'Montserrat', sans-serif;
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 110px;
-  font-size: 42px;
-  font-weight: 700;
-  color: #fff;
-  text-transform: uppercase;
-  text-shadow: 0px 2px 0px #0045d1;
-  letter-spacing: 13px;
-  margin: 0;
-}
-
-.notfound a {
-  font-family: 'Montserrat', sans-serif;
-  display: inline-block;
-  text-transform: uppercase;
-  color: #d82626;
-  text-decoration: none;
-  border: 2px solid;
-  background: transparent;
-  padding: 10px 40px;
-  font-size: 14px;
-  font-weight: 700;
-  -webkit-transition: 0.2s all;
-  transition: 0.2s all;
-}
-
-.notfound a:hover {
-  color: #0045d1;
-}
-
-@media only screen and (max-width: 767px) {
-  .notfound .notfound-404 h2 {
-    font-size: 24px;
-  }
-}
-
-@media only screen and (max-width: 480px) {
-  .notfound .notfound-404 h1 {
-    font-size: 182px;
-  }
 }

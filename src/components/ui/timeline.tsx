@@ -1,97 +1,96 @@
-'use client';
-import { cn } from '@/lib/utils';
-import { useMotionValueEvent, useScroll, useTransform, motion } from 'framer-motion';
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useMotionPreference } from '@/hooks/useMotionPreference';
 
 interface TimelineEntry {
   title: string;
+  subTitle?: string;
   content: React.ReactNode;
-  totalTime?: string;
 }
-
-export const Timeline = ({
+export function Timeline({
   data,
   title,
+  titleId,
   desc,
-  className
+  startOffset = 0.1
 }: {
   data: TimelineEntry[];
   title: string;
+  titleId: string;
   desc: string;
-  className?: string;
-}) => {
+  startOffset?: number;
+}) {
   const ref = useRef<HTMLDivElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState(0);
-
-  const updateHeight = () => {
-    if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
-    }
-  };
+  const [endOffset, setEndOffset] = useState(0.5);
+  const reduced = useMotionPreference();
 
   useEffect(() => {
-    updateHeight();
-    window.addEventListener('resize', updateHeight);
+    const element = ref.current;
+    if (!element) return;
+    // Keep the original midpoint finish for tall timelines, but prevent the
+    // scroll range from reversing for short entries such as Education.
+    const updateOffset = () =>
+      setEndOffset(Math.min(0.5, startOffset + element.offsetHeight / (window.innerHeight * 2)));
+    const observer = new ResizeObserver(updateOffset);
+    observer.observe(element);
+    window.addEventListener('resize', updateOffset);
     return () => {
-      window.removeEventListener('resize', updateHeight);
+      observer.disconnect();
+      window.removeEventListener('resize', updateOffset);
     };
-  }, [ref]);
+  }, [startOffset]);
 
   const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start 10%', 'end 50%']
+    target: ref,
+    offset: [`start ${startOffset * 100}%`, `end ${endOffset * 100}%`]
   });
-
-  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
-  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
-
+  // Grow the line itself so its gradient keeps the original shape as we scroll.
+  // Percentage height also follows content changes and responsive line wrapping.
+  const height = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
   return (
-    <div className={cn(className, 'w-full relative')} ref={containerRef}>
-      <div className="px-4 md:px-0">
-        <h2 className="text-3xl md:text-5xl mb-4 font-bold text-white max-w-4xl">{title}</h2>
-        <p className="text-neutral-300 text-xl md:text-3xl">{desc}</p>
-      </div>
-
-      <div ref={ref} className="relative">
-        {data.map((item, index) => (
-          <div key={index} className="flex justify-start pt-10 md:pt-40 md:gap-10">
-            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
-              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-black flex items-center justify-center">
-                <div className="h-4 w-4 rounded-full bg-neutral-800 border border-neutral-700 p-2" />
-              </div>
-              <h3 className="hidden md:block text-xl md:pl-20 md:text-3xl font-bold text-neutral-200">
-                {item.title}
-                <br />
-                {item.totalTime && (
-                  <span className="text-sm text-gray-500">({item.totalTime})</span>
-                )}
-              </h3>
+    <div ref={ref}>
+      <h2 id={titleId} className="text-3xl font-bold sm:text-4xl">
+        {title}
+      </h2>
+      <p className="mt-3 text-base text-text-secondary sm:text-lg">{desc}</p>
+      <div className="relative mt-8 [--timeline-axis:0.5rem] md:[--timeline-axis:12.5rem]">
+        <div
+          aria-hidden="true"
+          data-timeline-track
+          className="pointer-events-none absolute top-0 bottom-0 left-(--timeline-axis) w-0.5 -translate-x-1/2 overflow-hidden bg-linear-to-b from-transparent via-slate-700 to-transparent [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]">
+          <motion.div
+            data-timeline-progress
+            className="absolute inset-x-0 top-0 w-full rounded-full bg-linear-to-t from-purple-500 via-blue-500 via-10% to-transparent"
+            style={{ height: reduced ? '100%' : height, opacity: reduced ? 1 : opacity }}
+          />
+        </div>
+        {data.map((entry) => (
+          <div
+            key={entry.title}
+            data-timeline-entry
+            className="relative grid grid-cols-[1rem_1fr] gap-x-4 pb-10 last:pb-0 md:grid-cols-[12rem_1rem_1fr] md:gap-x-0">
+            <div className="sticky top-[calc(var(--header-height)+1.5rem)] hidden self-start pt-1 pr-4 text-sm font-semibold text-text-secondary md:block">
+              <p>{entry.title}</p>
+              {entry.subTitle != null && <p className="mt-1">{entry.subTitle}</p>}
             </div>
-
-            <div className="relative pl-20 pr-4 md:pl-4 w-full">
-              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-200">
-                {item.title}
-              </h3>
-              {item.content}{' '}
+            <div className="sticky top-[calc(var(--header-height)+1.5rem)] z-10 self-start pt-1">
+              <span
+                aria-hidden="true"
+                data-timeline-marker
+                className="mx-auto block size-3 rounded-full border-2 border-bg bg-slate-400"
+              />
+            </div>
+            <div className="min-w-0 md:pl-6">
+              <p className="mb-4 text-sm font-semibold text-text-secondary md:hidden">
+                {entry.title}
+                {entry.subTitle != null && <span className="mt-1 block">{entry.subTitle}</span>}
+              </p>
+              {entry.content}
             </div>
           </div>
         ))}
-        <div
-          style={{
-            height: height + 'px'
-          }}
-          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-700 to-transparent to-[99%]  [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] ">
-          <motion.div
-            style={{
-              height: heightTransform,
-              opacity: opacityTransform
-            }}
-            className="absolute inset-x-0 top-0 max-h-full w-[2px] bg-gradient-to-t from-purple-500 via-blue-500 to-transparent from-[0%] via-[10%] rounded-full"
-          />
-        </div>
       </div>
     </div>
   );
-};
+}

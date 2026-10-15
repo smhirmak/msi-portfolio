@@ -1,123 +1,105 @@
 import Image from 'next/image';
 import { Timeline } from '../ui/timeline';
-import { formatDistance } from 'date-fns';
+import { useMessages } from '@/i18n';
+import { useEffect, useState } from 'react';
+import { formatDuration } from '@/lib/duration';
 
-const data = [
-  {
-    title: 'Nov 2023 - Present',
-    totalTime: formatDistance(new Date('2023-11-01').getTime(), new Date().getTime()),
-    content: (
-      <div>
-        <p className="text-neutral-200 text-xl md:text-3xl font-bold mb-2">Frontend Developer</p>
-        <div className="flex w-fit gap-4 items-center mb-8">
-          <Image
-            src="/logos/experiences/tra-bilisim.svg"
-            alt="Tra Bilisim"
-            width={300}
-            height={300}
-            className="rounded-lg object-fill max-w-14 max-h-1max-w-14 md:max-h-24 md:max-w-24 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <p className="text-neutral-200 text-xl md:text-2xl md:whitespace-nowrap font-bold ">
-            Tra Bilişim
+export default function Experience({ currentMonth }: { currentMonth: string }) {
+  const { messages, locale } = useMessages();
+  const [month, setMonth] = useState(currentMonth);
+  useEffect(() => {
+    // Refresh static build data after hydration without a server/client mismatch.
+    setMonth(new Date().toISOString().slice(0, 7));
+  }, []);
+  const data = [
+    {
+      title: messages.traDates,
+      subTitle: formatDuration('2023-11', month, locale),
+      content: (
+        <article>
+          <h3 className="mb-3 text-xl font-bold sm:text-2xl">{messages.traRole}</h3>
+          <div className="mb-4 flex items-center gap-4">
+            <Image
+              src="/logos/experiences/tra-bilisim.svg"
+              alt="TRA Bilişim"
+              width={72}
+              height={72}
+              className="size-14 shrink-0 rounded-lg object-contain sm:size-18"
+            />
+            <div>
+              <p className="text-lg font-semibold">TRA Bilişim</p>
+              <p className="mt-1 text-sm text-text-secondary">{messages.traLocation}</p>
+            </div>
+          </div>
+          <p className="mb-4 text-sm leading-7 text-text-secondary">{messages.traIntro}</p>
+          <ul className="list-disc space-y-3 pl-5 text-sm leading-7 sm:text-base">
+            {messages.traBullets.map((bullet) => (
+              <li key={bullet}>{bullet}</li>
+            ))}
+          </ul>
+        </article>
+      )
+    },
+    {
+      title: messages.linatekDates,
+      subTitle: formatDuration('2022-01', '2023-07', locale),
+      content: (
+        <article>
+          <h3 className="mb-3 text-xl font-bold sm:text-2xl">{messages.linatekRole}</h3>
+          <div className="mb-4 flex items-center gap-4">
+            <Image
+              src="/logos/experiences/linatek.png"
+              alt="Linatek Elektronik Raylı Sistemler"
+              width={72}
+              height={72}
+              className="size-14 shrink-0 rounded-lg object-contain sm:size-18"
+            />
+            <div>
+              <p className="text-lg font-semibold">Linatek Elektronik Raylı Sistemler</p>
+              <p className="mt-1 text-sm text-text-secondary">{messages.linatekLocation}</p>
+            </div>
+          </div>
+          <p className="text-sm leading-7 text-text-secondary sm:text-base">
+            {messages.linatekDescription}
           </p>
-        </div>
-        <p className="text-neutral-200 text-sm md:text-base font-normal mb-8">
-          I am working as a Frontend Developer at Tra Bilisim. I am responsible for developing and
-          maintaining the frontend of the projects. I am using React, Typescript, Tailwind, and
-          Material UI in the projects.
-        </p>
-      </div>
-    )
-  },
-  {
-    title: 'Jan 2022 - July 2023',
-    totalTime: formatDistance(new Date('2022-01-01').getTime(), new Date('2023-07-01').getTime()),
-    content: (
-      <div>
-        <p className="text-neutral-200 text-xl md:text-3xl font-bold mb-2">
-          R&D / Hardware Design Engineer
-        </p>
-        <div className="flex w-fit gap-4 items-center mb-8">
-          <Image
-            src="/logos/experiences/linatek.png"
-            alt="Tra Bilisim"
-            width={300}
-            height={300}
-            className="rounded-lg object-fill max-w-14 max-h-1max-w-14 md:max-h-24 md:max-w-24 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <p className="text-neutral-200 text-xl md:text-2xl md:whitespace-nowrap font-bold ">
-            Linatek Elektronik Raylı Sistemler
-          </p>
-        </div>
-        <p className="text-neutral-200 text-sm md:text-base font-normal mb-8">
-          Electric electronic cards and units of locomotives production and repair. These cards and
-          Electronic card design, drawing in the production of units, I am involved in repair and
-          software areas.
-        </p>
-      </div>
-    )
-  },
-  {
-    title: 'July 2021 - Jan 2022',
-    totalTime: formatDistance(new Date('2021-07-01').getTime(), new Date('2022-01-01').getTime()),
-    content: (
-      <div>
-        <p className="text-neutral-200 text-xl md:text-3xl font-bold mb-2">
-          Electric Electronics Engineer Intern
-        </p>
-        <div className="flex w-fit gap-4 items-center mb-8">
-          <Image
-            src="/logos/experiences/linatek.png"
-            alt="Tra Bilisim"
-            width={300}
-            height={300}
-            className="rounded-lg object-fill max-w-14 max-h-1max-w-14 md:max-h-24 md:max-w-24 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <p className="text-neutral-200 text-xl md:text-2xl md:whitespace-nowrap font-bold ">
-            Linatek Elektronik Raylı Sistemler
-          </p>
-        </div>
-        <p className="text-neutral-200 text-sm md:text-base font-normal mb-8">
-          I developed projects in the field of Embedded Systems. I soldered SMD and DIP materials on
-          PCB boards. I made schematic drawings with Reverse Engineering methods.
-        </p>
-      </div>
-    )
-  },
-  {
-    title: 'Jan 2020 - Feb 2020',
-    totalTime: formatDistance(new Date('2020-01-01').getTime(), new Date('2020-02-01').getTime()),
-    content: (
-      <div>
-        <p className="text-neutral-200 text-xl md:text-3xl font-bold mb-2">
-          Electric Electronics Engineer Intern
-        </p>
-        <div className="flex w-fit gap-4 items-center mb-8">
-          <Image
-            src="/logos/experiences/genpark.png"
-            alt="Tra Bilisim"
-            width={300}
-            height={300}
-            className="rounded-lg object-fill max-w-14 max-h-1max-w-14 md:max-h-24 md:max-w-24 w-fit shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]"
-          />
-          <p className="text-neutral-200 text-xl md:text-2xl md:whitespace-nowrap font-bold ">
-            GENPARK Power System
-          </p>
-        </div>
-        <p className="text-neutral-200 text-sm md:text-base font-normal mb-8">
-          I worked in electrical panel design and assembly departments.
-        </p>
-      </div>
-    )
-  }
-];
-
-const Experince = () => {
+        </article>
+      )
+    }
+  ];
   return (
-    <div className="pt-24" id="experience">
-      <Timeline title="Experience" desc="Here are some of my projects" data={data} />
-    </div>
+    <section id="experience" tabIndex={-1} aria-labelledby="experience-title">
+      <Timeline
+        title={messages.experience}
+        titleId="experience-title"
+        desc={messages.experienceIntro}
+        data={data}
+      />
+      <div className="mt-10">
+        <h3 className="mb-5 text-xl font-semibold">{messages.internships}</h3>
+        <div className="grid gap-5 md:grid-cols-2">
+          {['Linatek Elektronik Raylı Sistemler', 'GENPARK Power System'].map((company, index) => (
+            <article key={company} className="rounded-xl border border-slate-700 p-5">
+              <div className="mb-3 flex items-center gap-3">
+                <Image
+                  src={`/logos/experiences/${index === 0 ? 'linatek' : 'genpark'}.png`}
+                  alt={company}
+                  width={48}
+                  height={48}
+                  className="shrink-0 rounded-lg object-contain"
+                />
+                <div>
+                  <h4 className="font-semibold">{company}</h4>
+                  <p className="mt-1 text-sm text-text-secondary">{messages.internDates[index]}</p>
+                </div>
+              </div>
+              <p className="mb-2 text-sm font-medium">{messages.internRole}</p>
+              <p className="text-sm leading-7 text-text-secondary">
+                {messages.internDescriptions[index]}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
   );
-};
-
-export default Experince;
+}

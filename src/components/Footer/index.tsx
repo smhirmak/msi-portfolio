@@ -1,42 +1,42 @@
 import { Bio } from '@/data/constants';
 import { IconBrandGithub, IconBrandLinkedin } from '@tabler/icons-react';
-import Link from 'next/link';
-import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
+import { useMessages } from '@/i18n';
 
-function Footer() {
-  function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }
+export default function Footer() {
+  const { messages } = useMessages();
   return (
-    <div className='w-full py-8 flex justify-center'>
-      <div className='w-full max-w-[1200px] flex flex-col gap-3 items-center p-4 text-text-primary'>
-        <h1 className='font-semibold text-xl text-primary cursor-default'>Muhammed Semih Irmak</h1>
-        <nav className='w-full [&>a]:cursor-pointer max-w-[800px] mt-4 flex gap-5 md:text-start text-sm mb-8 md:mb-0 md:text-base text-center md:gap-8 justify-center flex-wrap [&>a]:text-text-primary [&>a]:no-underline [&>a]:text-base md:[&>a]:text-lg [&>a]:transition-all [&>a]:mb-0 md:[&>a]:mb-4'>
-          <Link className='hover:text-primary' href='' onClick={(e) => { e.stopPropagation(); scroll.scrollToTop() }}>About</Link>
-          <ScrollLink className='hover:text-primary' to="projects" smooth={true}>Projects</ScrollLink>
-          <ScrollLink className='hover:text-primary' to="experience" smooth={true}>Experience</ScrollLink>
-          <ScrollLink className='hover:text-primary' to="skills" smooth={true}>Skills</ScrollLink>
-          <ScrollLink className='hover:text-primary' to="education" smooth={true}>Education</ScrollLink>
-          <ScrollLink className='hover:text-primary' to="contact" smooth={true}>Contact</ScrollLink>
-        </nav>
-        <div className='flex text-2xl md:text-base'>
-          <a className='inline-block mx-3 text-xl text-text-primary transition-colors' href={Bio.linkedin} target="display">
-            <IconBrandLinkedin
-              size={35}
-              className='hover:text-icons-hover transition-all duration-300 hover:scale-125'
-            />
+    <footer className="mt-16 border-t border-slate-800 px-4 py-10 text-center">
+      <p className="font-semibold text-xl text-primary">{Bio.name}</p>
+      <p className="mt-2 text-sm text-text-secondary">{messages.title}</p>
+      <nav aria-label={messages.footer} className="my-5 flex flex-wrap justify-center gap-x-6">
+        {Object.entries(messages.nav).map(([id, label]) => (
+          <a
+            key={id}
+            href={`#${id}`}
+            className="inline-flex min-h-11 items-center text-sm transition-colors hover:text-primary">
+            {label}
           </a>
-          <a className='inline-block mx-3 text-xl text-text-primary transition-colors' href={Bio.github} target="display">
-            <IconBrandGithub
-              size={35}
-              className='hover:text-icons-hover transition-all duration-300 hover:scale-125'
-            />
-          </a>
-        </div>
+        ))}
+      </nav>
+      <div className="flex justify-center gap-3">
+        <a
+          href={Bio.linkedin}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          className="flex size-11 items-center justify-center hover:text-icons-hover">
+          <IconBrandLinkedin size={26} aria-hidden="true" />
+        </a>
+        <a
+          href={Bio.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="GitHub"
+          className="flex size-11 items-center justify-center hover:text-icons-hover">
+          <IconBrandGithub size={26} aria-hidden="true" />
+        </a>
       </div>
-    </div>
+      <p className="mt-4 text-xs text-text-secondary">{messages.footer}</p>
+    </footer>
   );
 }
-
-export default Footer;

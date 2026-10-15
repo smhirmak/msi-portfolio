@@ -1,6 +1,5 @@
-
 const HeroBgAnimation = () => (
-  <div className='w-[500px] md:h-[500px]'>
+  <div className="w-full max-w-[500px] md:h-[500px]">
     <svg
       className="BgAnimation__svg"
       viewBox="0 0 602 602"
@@ -50,7 +49,7 @@ const HeroBgAnimation = () => (
         transform="translate(-295.027 -193.118)"
         rx="1.07306"
         ry="1.07433"
-        fill="#46737">
+        fill="#F46737">
         <animateMotion dur="5s" begin="1" repeatCount="indefinite" rotate="auto">
           <mpath xlinkHref="#path_2" />
         </animateMotion>

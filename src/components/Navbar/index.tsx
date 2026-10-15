@@ -1,161 +1,149 @@
-"use client";
-import { Bio } from '@/data/constants';
-import Logo from '@/images/logo.png';
+import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
-import Link from 'next/link';
-import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
-import { useEffect, useState } from 'react';
-import { FaBars } from 'react-icons/fa';
-import { MovingBorder } from '../ui/moving-border';
+import { IconMenu2, IconX, IconBrandGithub } from '@tabler/icons-react';
+import Logo from '@/images/logo.png';
+import { Bio } from '@/data/constants';
+import { useMessages } from '@/i18n';
 import { cn } from '@/lib/utils';
+import { MovingBorder } from '@/components/ui/moving-border';
 
-const NavBar = () => {
-  function mobileMenu() {
-    setOpen(prev => !prev);
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }
-
-  const [open, setOpen] = useState<boolean>(false);
-  const [isMobile, setIsMobile] = useState<boolean>(false);
+export default function NavBar() {
+  const { messages, locale } = useMessages();
+  const router = useRouter();
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState('hero');
+  const button = useRef<HTMLButtonElement>(null);
+  const nav = useRef<HTMLElement>(null);
+  const links = Object.entries(messages.nav);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) if (entry.isIntersecting) setActive(entry.target.id);
+      },
+      { rootMargin: '-20% 0px -60% 0px', threshold: 0 }
+    );
+    document.querySelectorAll('main section[id]').forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const closeOutside = (event: PointerEvent) => {
+      if (!nav.current?.contains(event.target as Node)) setOpen(false);
     };
-    handleResize();
-    window.addEventListener('resize', handleResize);
+    const media = window.matchMedia('(min-width: 1024px)');
+    const closeWide = () => {
+      if (media.matches) setOpen(false);
+    };
+    document.addEventListener('pointerdown', closeOutside);
+    media.addEventListener('change', closeWide);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('pointerdown', closeOutside);
+      media.removeEventListener('change', closeWide);
     };
   }, []);
 
+  async function changeLanguage(nextLocale: string) {
+    document.cookie = `NEXT_LOCALE=${nextLocale};path=/;max-age=31536000;SameSite=Lax`;
+    const target = `${router.asPath.split('#')[0]}${window.location.hash}`;
+    await router.push(target, target, { locale: nextLocale, scroll: false });
+    setOpen(false);
+  }
+
   return (
-    <div className='bg-slate-950 h-20 flex justify-center items-center text-base sticky top-0 z-50 transition-all'>
-      <div className='flex justify-between h-16 z-1 w-full max-w-[1200px]'>
-        <Link className='w-full p-0 flex justify-center items-center no-underline absolute top-4 md:relative md:top-0' href="/">
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              color: 'white',
-              marginBottom: '20',
-              cursor: 'pointer'
-            }}>
-            <Image className='w-[251px] h-[27px] md:w-[280px] md:h-[30px]' src={Logo} alt="SEMIHIRMAK" />
-          </div>
-        </Link>
-        <div className='md:hidden block absolute top-4 right-0 -translate-x-[80%] translate-y-[0%] text-2xl cursor-pointer text-text-primary'>
-          <FaBars
-            onClick={() => {
-              setOpen(prev => !prev);
-            }}
+    <header className="sticky top-0 z-50 h-20 border-b border-slate-800 bg-bg/95 backdrop-blur-md">
+      <nav
+        ref={nav}
+        aria-label={locale === 'tr' ? 'Ana navigasyon' : 'Main navigation'}
+        className="mx-auto flex h-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6"
+        onKeyDown={(event) => {
+          if (event.key === 'Escape' && open) {
+            setOpen(false);
+            button.current?.focus();
+          }
+        }}
+        onBlur={(event) => {
+          if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget as Node))
+            setOpen(false);
+        }}>
+        <a href="#hero" className="shrink-0" aria-label={Bio.name} onClick={() => setOpen(false)}>
+          <Image
+            src={Logo}
+            alt={Bio.name}
+            className="h-auto w-36 sm:w-48 xl:w-56"
+            sizes="(min-width: 1280px) 224px, (min-width: 640px) 192px, 144px"
+            preload
           />
-        </div>
-
-        <ul className='w-full hidden md:flex justify-center items-center gap-8 list-none [&>a]:text-text-primary [&>a]:font-medium [&>a]:cursor-pointer [&>a]:no-underline [&>a]:transition-all'>
-          <Link className='hover:text-primary' href='' onClick={(e) => { e.stopPropagation(); scroll.scrollToTop() }}>About</Link>
-          <ScrollLink className='hover:text-primary' to="projects" smooth={true}>Projects</ScrollLink>
-          <ScrollLink className='hover:text-primary' to="experience" smooth={true}>Experience</ScrollLink>
-          <ScrollLink className='hover:text-primary' to="skills" smooth={true}>Skills</ScrollLink>
-          <ScrollLink className='hover:text-primary' to="education" smooth={true}>Education</ScrollLink>
-          <ScrollLink className='hover:text-primary' to="contact" smooth={true}>Contact</ScrollLink>
+        </a>
+        <ul className="hidden items-center gap-4 text-sm lg:flex xl:gap-6">
+          {links.map(([id, label]) => (
+            <li key={id}>
+              <a
+                href={`#${id}`}
+                aria-current={active === id ? 'location' : undefined}
+                className={cn(
+                  'inline-flex min-h-11 items-center transition-colors hover:text-primary',
+                  active === id && 'text-primary'
+                )}>
+                {label}
+              </a>
+            </li>
+          ))}
         </ul>
-        {!isMobile && <div className='hidden md:flex items-center justify-end w-[80%] py-0 px-2'>
-          <Link href={Bio.github} target="display"
-            className={cn(
-              "bg-transparent relative text-xl h-16 w-40 p-[2px] overflow-hidden ",
-            )}
-            style={{
-              borderRadius: "1.75rem",
-            }}
-          >
-            <div
-              className="absolute inset-0"
-              style={{ borderRadius: `calc(1.75rem * 0.96)` }}
-            >
-              <MovingBorder
-                duration={7000}
-                rx="30%" ry="30%">
-                <div
-                  className={cn(
-                    "h-20 w-20 opacity-[0.8] bg-[radial-gradient(#f00_40%,transparent_60%)]",
-                  )}
-                />
-              </MovingBorder>
-            </div>
-
-            <div
-              className={cn(
-                "relative bg-slate-950 border border-slate-700 backdrop-blur-xl text-[#f00] flex items-center justify-center w-full h-full text-sm antialiased",
-              )}
-              style={{
-                borderRadius: `calc(1.75rem * 0.96)`,
-              }}
-            >
-              Github Profile
-            </div>
-          </Link>
-        </div>}
-      </div>
-      <div data-open={open} className='flex flex-col justify-center gap-4 absolute top-20 right-0 w-full pt-[42px] px-10 pb-6 bg-[rgba(25,25,36,0.9)] transition-all data-[open=false]:translate-x-0 rounded-b-2xl shadow-2xl data-[open=true]:opacity-100 data-[open=false]:opacity-0 data-[open=true]:z-1 data-[open=false]:-z-1 data-[open=false]:hidden'>
-        <Link className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
-          href='' onClick={(e) => { e.stopPropagation(); setOpen(prev => !prev); scroll.scrollToTop() }}>
-          About
-        </Link>
-        <ScrollLink
-          className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
-          to="projects"
-          smooth={true}
-          onClick={() => {
-            setOpen(prev => !prev);
-          }}>
-          Projects
-        </ScrollLink>
-        <ScrollLink
-          className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
-          to="experience"
-          smooth={true}
-          onClick={() => {
-            setOpen(prev => !prev);
-          }}>
-          Experience
-        </ScrollLink>
-        <ScrollLink
-          className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
-          to="skills"
-          smooth={true}
-          onClick={() => {
-            setOpen(prev => !prev);
-          }}>
-          Skills
-        </ScrollLink>
-        <ScrollLink
-          className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
-          to="education"
-          smooth={true}
-          onClick={() => {
-            setOpen(prev => !prev);
-          }}>
-          Education
-        </ScrollLink>
-        <ScrollLink
-          className='text-text-primary font-medium cursor-pointer no-underline transition-all hover:text-primary'
-          to="contact"
-          smooth={true}
-          onClick={() => {
-            setOpen(prev => !prev);
-          }}>
-          Contact
-        </ScrollLink>
-        <Link className='bg-primary w-full text-white border-[1.8px] border-primary rounded-2xl flex no-underline justify-center items-center py-2.5 px-4 h-[70%] text-xs md:text-base font-medium transition-all cursor-pointer hover:bg-transparent hover:text-primary'
-          href={Bio.github}
-          target="display">
-          Github Profile
-        </Link>
-      </div>
-    </div>
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <select
+            aria-label={messages.language}
+            value={locale}
+            onChange={(event) => void changeLanguage(event.target.value)}
+            className="min-h-11 rounded-lg border border-slate-600 bg-card px-2 text-sm font-semibold cursor-pointer">
+            <option value="en" lang="en">
+              EN
+            </option>
+            <option value="tr" lang="tr">
+              TR
+            </option>
+          </select>
+          <a
+            href={Bio.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={messages.github}
+            className="relative isolate hidden min-h-11 items-center gap-2 rounded-lg border border-slate-600 px-3 text-primary transition-colors hover:bg-card lg:inline-flex">
+            <MovingBorder>
+              <div className="size-12 rounded-full bg-red-500/70 blur-md" />
+            </MovingBorder>
+            <IconBrandGithub size={20} aria-hidden="true" />
+            <span className="hidden text-sm xl:inline">GitHub</span>
+          </a>
+          <button
+            ref={button}
+            type="button"
+            aria-label={open ? messages.menuClose : messages.menuOpen}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+            className="flex size-11 items-center justify-center rounded-lg border border-slate-600 lg:hidden"
+            onClick={() => setOpen(!open)}>
+            {open ? <IconX aria-hidden="true" /> : <IconMenu2 aria-hidden="true" />}
+          </button>
+        </div>
+        <ul
+          id="mobile-navigation"
+          hidden={!open}
+          className="absolute inset-x-0 top-20 border-b border-slate-700 bg-bg px-4 py-3 shadow-xl lg:hidden">
+          {links.map(([id, label]) => (
+            <li key={id}>
+              <a
+                href={`#${id}`}
+                className="block rounded-lg px-4 py-3 hover:bg-card hover:text-primary"
+                aria-current={active === id ? 'location' : undefined}
+                onClick={() => setOpen(false)}>
+                {label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
   );
-};
-
-export default NavBar;
+}

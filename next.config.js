@@ -1,18 +1,18 @@
 /** @type {import('next').NextConfig} */
-
 const nextConfig = {
-  reactStrictMode: false,
-  swcMinify: true,
+  reactStrictMode: true,
   i18n: {
-    locales: ['en'],
-    defaultLocale: 'en'
-  },
-  compiler: {
-    styledComponents: true
+    locales: ['en', 'tr'],
+    defaultLocale: 'en',
+    localeDetection: false
   },
   images: {
-    domains: ['upload.wikimedia.org', 'user-images.githubusercontent.com'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'upload.wikimedia.org' },
+      { protocol: 'https', hostname: 'user-images.githubusercontent.com' }
+    ],
+    formats: ['image/avif', 'image/webp']
   },
+  poweredByHeader: false
 };
-
 module.exports = nextConfig;

@@ -1,30 +1,25 @@
 import { projects } from '@/data/constants';
-import { motion } from "framer-motion";
 import { LampContainer } from '../ui/lamp';
 import { HoverEffect } from '../ui/card-hover-effect';
+import { useMessages } from '@/i18n';
 
-const Projects = () => {
+export default function Projects() {
+  const { messages } = useMessages();
+  const labels = messages.links as Record<string, string>;
+  const localized = projects.map((project, index) => ({
+    ...project,
+    ...messages.projectDetails[index],
+    links: project.links?.map((link) => ({ ...link, label: labels[link.label] || link.label }))
+  }));
   return (
-    <div className='bg-slate-950 mb-20' id='projects'>
+    <section id="projects" tabIndex={-1} aria-labelledby="projects-title" className="relative">
       <LampContainer>
-        <motion.h1
-          initial={{ opacity: 0.5, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.3,
-            duration: 0.8,
-            ease: "easeInOut",
-          }}
-          className="bg-gradient-to-br from-slate-300 to-slate-500 py-4 bg-clip-text text-center text-4xl font-medium tracking-tight text-transparent md:text-7xl"
-        >
-          <div>
-            <span className='text-4xl md:text-6xl font-bold'>Projects</span> <br /> <span className='text-2xl md:text-4xl'>Projects of my own that I`m working on.</span>
-          </div>
-        </motion.h1>
+        <h2 id="projects-title" className="text-3xl font-bold sm:text-4xl">
+          {messages.projects}
+        </h2>
+        <p className="mt-3 text-base text-text-secondary sm:text-lg">{messages.projectIntro}</p>
       </LampContainer>
-      <HoverEffect items={projects} />
-    </div>
+      <HoverEffect items={localized} />
+    </section>
   );
-};
-
-export default Projects;
+}
